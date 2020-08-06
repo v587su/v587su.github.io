@@ -41,14 +41,14 @@
             <!-- Main Image -->
             <img class="img-responsive" src="pic.png" alt="">
             <div style="margin-top:3%; text-align:justify;">
-                <p>I'm a <b>graduate student</b> in <b>software engineering</b> at Tongji University supervised by <b>Dr.
-                    Yan Liu</b>.</p>
-                <p>My research interests are to explore effective techniques in software engineering through <b>mining
-                    software repositories</b>. The goal of my research is improving the coding efficiency of developers
-                    with
-                    various techniques like <b>Deep Learning</b>.</p>
-                <p>Currently, I'm looking for a <b>PhD position</b> in software engineering to advance my research
-                    further.</p>
+                <p>I'm a <b>graduate student</b> majoring in <b>software engineering</b> at Tongji University supervised
+                    by <b>Dr. Yan Liu</b>.</p>
+                <p>My research interests are My research interests are <b>mining software repositories</b> with various
+                    techniques like information retrieval and natural language processing. The goal of my research is
+                    to improve the coding efficiency of developers.
+                <p>Currently, I'm studying how graph neural networks could be used to improve the retrieval and
+                    recommendation system for developers. Besides, I'm looking for a <b>PhD position</b> in software
+                    engineering to advance my research further.</p>
             </div>
         </div>
 
@@ -134,9 +134,9 @@
             <div class="col-sm-4"><img class="img-responsive" src="papers/codesearch/model_pic.png" alt="img">
             </div>
             <div class="col-sm-8" align="justify">
-                <p><strong><font size="4">Semantic Code Search</font></strong></p>
+                <p><strong><font size="4">Deep Learning based Semantic Code Search</font></strong></p>
                 This project proposed a neural model for semantic code search. When the semantics of code (e.g.,
-                identifier names) are ambiguous, previous works need to relearn the structure information from lexical
+                identifier names) are ambiguous, previous works need to relearn the structural information from lexical
                 tokens of code, which is extremely difficult for a model without any domain knowledge. In contrast, Our
                 model encodes both the semantics and structures of code, by representing code with AST paths. Our
                 model significantly outperforms both DeepCS, the first approach that applies deep learning to code
@@ -148,23 +148,41 @@
     <br/>
 
     <div class="row">
-
         <div class="col-md-8">
             <br/>
             <div class="col-sm-4"><img class="img-responsive" src="papers/req2lib/model_pic.png" alt="img">
             </div>
             <div class="col-sm-8" align="justify">
-                <p><strong><font size="4">Requirement-based Library Recommendation</font></strong></p>
-                This project identified a new perspective on library Recommendation: Recommend useful libraries given
-                requirement descriptions of a project. It helps to avoid some key problems in existing models including
+                <p><strong><font size="4">Requirement based Library Recommendation</font></strong></p>
+                This project identified a new perspective on library recommendation: recommending useful libraries given
+                requirement descriptions of the software project. It helps to avoid some key problems in existing models
+                including
                 requirement insufficiently matching and cold-start problem. With deep learning (DL), it is practical for
-                models to understand the requirement of projects. We proposed a DL model for library recommendation
-                given requirement descriptions. The experiment results show that the model can recommend libraries
-                accurately, which proves the practicality of our perspective.
+                models to understand the requirements of projects. We proposed a DL model for library recommendation
+                based on requirement descriptions. The experiment results show that the model can recommend libraries
+                accurately with a SuccessRate@10 of 90.4%, which proves that this perspective has practical values.
             </div>
             <br><br><br>
         </div>
     </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-8">
+            <br/>
+            <div class="col-sm-4"><img class="img-responsive" src="papers/spitalAllocation/model_pic.png" alt="img">
+            </div>
+            <div class="col-sm-8" align="justify">
+                <p><strong><font size="4">Smart Resource Allocation among Cities in Region</font></strong></p>
+                This project focused on the resource allocation in a region using smart techniques. The goal of this
+                project is to provide advices to policy makers for the regional development on innovation. We built a
+                machine learning model with XGBoost to predict the innovation ability of cities based on
+                their innovation-related statistics. With the prediction model, we used optimization algorithms like
+                Simulated Annealing to find the optimal solution for resource allocation.
+            </div>
+            <br><br><br>
+        </div>
+    </div>
+
 </div>
 
 
