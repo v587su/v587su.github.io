@@ -8,7 +8,7 @@
 <html lang="en">
 
 <head>
-    <title>Zhensu Sun - SSE, Tongji University</title>
+    <title>Zhensu Sun - SIST, ShanghaiTech University</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -28,7 +28,8 @@
                 <li><a href="#education">Education</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#publications">Publications</a></li>
-                <li><a href="/ZhensuSun_CV.pdf">CV</a></li>
+                <li><a href="#awards">Awards</a></li>
+                <!-- <li><a href="/ZhensuSun_CV.pdf">CV</a></li> -->
                 <!-- <li><a href="/ZhensuSun_CV_CN.pdf">CV_CN</a></li> -->
             </ul>
         </div>
@@ -44,14 +45,10 @@
                 <!-- Main Image -->
                 <img class="img-responsive" src="pic.png" alt="">
                 <div style="margin-top:3%; text-align:justify;">
-                    <p>I'm a <b>graduate student</b> majoring in <b>software engineering</b> at Tongji University
-                        supervised
-                        by <b>Dr. Yan Liu</b>.</p>
-                    <p>My research interest is <b>mining software repositories</b> with various
-                        techniques like information retrieval and natural language processing. The goal of my research
-                        is
-                        to improve the productivity of developers.
-                    <p>Currently, I'm studying how to improve the quality of datasets for neural code search models.</p>
+                    <p> Currently, I'm a <b>research assistant</b> in <b>S3 Lab</b> at ShanghaiTech University
+                        supervised by <b>Dr. Fu Song</b>. </p>
+                    <p>My research interest is <b>SE&AI</b>. The goal of my research
+                        is to improve the productivity of developers.
                 </div>
             </div>
 
@@ -59,10 +56,10 @@
             <div class="col-md-4">
                 <div style="font-family: 'Oswald', sans-serif; font-size: 32px;"><b>Zhensu Sun</b></div>
                 <br>
-                <p><b>87su@tongji.edu.cn</b><br>
-                <p>School of Software Engineering<br>
-                    Tongji University <br>
-                    No.4800 Cao'An Highway, Jia Ding Campus<br>
+                <p><b>sunzhs@shanghaitech.edu.cn</b><br>
+                <p>School of Information Science and Technology<br>
+                    ShanghaiTech University <br>
+                    393 Huaxia Middle Road, Pudong<br>
                     Shanghai <br>
                     China<br>
                 </p>
@@ -72,7 +69,6 @@
             <!-- Links on the Sidebar -->
             <div class="col-md-4" style="margin-top:2%">
                 <dd><a href="https://github.com/v587su">Github</a></dd>
-                <dd><a href="https://www.researchgate.net/profile/Zhensu_Sun">ResearchGate</a></dd>
             </div>
 
         </div>
@@ -83,10 +79,9 @@
         <div class="row">
             <div class="col-md-8">
                 <h2 id="education">Education</h2>
-
                 <strong>M.S. in Software Engineering</strong><br />
                 <p>
-                    Tongji University (Sep 2018 - Expected Mar 2021,
+                    Tongji University (Sep 2018 - Mar 2021,
                     Shanghai, China)<br />
                 </p>
                 <strong>B.S. in Logistic Engineering</strong><br />
@@ -127,135 +122,33 @@
 
                 <ul>
                     <li class="paper" words="add, your, keywords, here">
-                        <b>Zhensu Sun</b>, Li Li, Yan Liu.
-                        “On the importance of Building High-quality Training Datasets for Neural Code Search”.
-                        in Progress.
+                        <b>Zhensu Sun</b>, Xiaoning Du, Fu Song, Mingze Ni, Li Li.
+                        “CoProtector: Protect Open-Source Code against Unauthorized Training Usage with Data Poisoning”.
+                        Arxiv.
+                        <a href="https://arxiv.org/pdf/2110.12925.pdf">[PDF]</a>
                     </li>
                 </ul>
             </div>
         </div>
 
-        <!-- Selected Projects -->
+        <!-- Awards -->
         <br />
 
         <div class="row">
-            <div class="col-md-8">
-                <h2 id="projects">Selected Projects</h2>
 
-                <div style="margin: 18% 0;"  class="col-sm-4"><img class="img-responsive" src="papers/codeSearchDataset/model.png" alt="img">
-                </div>
-                <div class="col-sm-8" align="justify">
-                    <p><strong>
-                            <font size="4">High-quality Training Datasets for Neural Code Search</font>
-                        </strong></p>
-                    This project proposes a filtering framework consisting of two steps: rule-based and model-based
-                    filtering. The rule-based step applies scalable heuristic rules to identify the syntactic defects in
-                    the dataset. We pre-define a rule set with several available rules, which are configurable based on
-                    the nature of data. The model-based step is an approach using deep learning to find the outlier
-                    data. The approach trains a Variational Auto-Encoder that learns the holistic properties (e.g.,
-                    writing style) from real query corpus. Data points that fail to be reconstructed by the trained
-                    model are considered unqualified, i.e., data points with high reconstruction losses. We use an
-                    unsupervised clustering algorithm, Expectation-Maximization for Gaussian Mixture Model, to cluster
-                    the qualified data. The experiments show that our filtering method can significantly improve the
-                    performance of the code search model with only half of the origin data. Finally, we build a code
-                    search dataset, CoFiC, for model training to reduce the bias during model design, evaluation, and
-                    application with our filtering framework.
-                </div>
+            <div class="col-md-8">
+                <h2 id="awards">Awards</h2>
+
+                <ul>
+                    <li class="award">
+                        2018 Excellent Graduates in Shanghai
+                        <a href="papers/req2lib/saner20era-p285-p-8b68ba4-43591-preprint.pdf">[PDF]</a>
+                        <a href="papers/req2lib/Req2Lib.key">[Keynote]</a>
+                    </li>
+                </ul>
+
             </div>
         </div>
-        <br />
-
-
-        <div class="row">
-            <div class="col-md-8">
-                <br />
-                <div class="col-sm-4"><img class="img-responsive" src="papers/codeSearch/model_pic.png" alt="img">
-                </div>
-                <div class="col-sm-8" align="justify">
-                    <p><strong>
-                            <font size="4">Deep Learning-based Semantic Code Search</font>
-                        </strong></p>
-                    This project proposes a neural model for semantic code search. When the semantics of code (e.g.,
-                    identifier names) are ambiguous, previous works need to relearn the structural information from
-                    lexical tokens of code, which is extremely difficult for a model without any domain knowledge. In contrast,
-                    Our model encodes both the semantics and structures of code, by representing code with AST paths. Our
-                    model significantly outperforms both DeepCS, the first approach that applies deep learning to code
-                    search task, and CARLCS, a state-of-the-art approach that bases on deep learning. The paper is
-                    currently under submission. <a href="papers/codeSearch/2008.03042.pdf">[PDF]</a>
-                </div>
-            </div>
-        </div>
-        <br />
-
-        <div class="row">
-            <div class="col-md-8">
-                <br />
-                <div class="col-sm-4"><img class="img-responsive" src="papers/req2lib/model_pic.png" alt="img">
-                </div>
-                <div class="col-sm-8" align="justify">
-                    <p><strong>
-                            <font size="4">Requirement-based Library Recommendation</font>
-                        </strong></p>
-                    This project identifies a new perspective on library recommendation: recommending useful libraries
-                    given
-                    requirement descriptions of the software project. It helps to avoid some key problems in existing
-                    models
-                    including
-                    requirement insufficiently matching and cold-start problem. With deep learning (DL), it is practical
-                    for
-                    models to understand the requirements of projects. We proposed a DL model for library recommendation
-                    based on requirement descriptions. The experiment results show that the model can recommend
-                    libraries
-                    accurately with a SuccessRate@10 of 90.4%, which proves that this perspective has practical values.
-                    <a href="papers/req2lib/saner20era-p285-p-8b68ba4-43591-preprint.pdf">[PDF]</a>
-                </div>
-                <br><br><br>
-            </div>
-        </div>
-        <br />
-        <div class="row">
-            <div class="col-md-8">
-                <br />
-                <div class="col-sm-4"><img class="img-responsive" src="papers/libSearch/model_pic.png" alt="img">
-                </div>
-                <div class="col-sm-8" align="justify">
-                    <p><strong>
-                            <font size="4">Library Search using Dependency Graph</font>
-                        </strong></p>
-                    This project studies how to improve the library search with the dependency graph of libraries.
-                    Library
-                    search is important to developers, especially starters. The search
-                    results on Google are usually too noisy with unrelated texts. To identify the suitable libraries
-                    directly, we proposed a neural IR model with the dependency graph. The Graph-enhanced search has
-                    been successfully applied
-                    in fields like product search. The dependency graph
-                    of the library provides rich information on the usage of libraries, which helps the model to better
-                    understand
-                    the functions of the library.
-
-                </div>
-                <br><br><br>
-            </div>
-        </div>
-        <!-- <br />
-        <div class="row">
-            <div class="col-md-8">
-                <br />
-                <div class="col-sm-4"><img class="img-responsive" src="papers/spitalAllocation/model_pic.png" alt="img">
-                </div>
-                <div class="col-sm-8" align="justify">
-                    <p><strong>
-                            <font size="4">Smart Resource Allocation among Cities in Region</font>
-                        </strong></p>
-                    This project focused on resource allocation in a region using smart techniques. The goal of this
-                    project is to provide advice to policymakers for the regional development of innovation. We built a
-                    machine learning model with XGBoost to predict the innovation ability of cities based on
-                    their innovation-related statistics. With the prediction model, we used optimization algorithms like
-                    Simulated Annealing to find the optimal solution for resource allocation.
-                </div>
-                <br><br><br>
-            </div>
-        </div> -->
 
     </div>
 
