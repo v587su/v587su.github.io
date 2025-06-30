@@ -66,32 +66,29 @@
     color: 	black;
     border-color: black;
     }
-    .service-section {
-    margin-top: 2em;
-    }
-
-    .service-section h2 {
-    font-size: 1.5em;
-    margin-bottom: 0.8em;
-    }
-
-    .service-section .service-list {
-    list-style-type: none;
+    .service-list {
+    list-style: none;
     padding-left: 0;
     }
 
-    .service-section .service-list li {
-  margin-bottom: 0.6em;
-  line-height: 1.6;
-  padding-left: 170px;     
-  text-indent: -170px;     
-}
-
-    .service-section .service-list strong {
-    display: inline-block;
-    min-width: 170px; 
+    .service-list li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 8px;
     }
 
+    .service-role {
+      width: 150px; /* 控制左侧对齐宽度 */
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .service-detail {
+      flex: 1;
+      text-indent: -1.2em;
+      padding-left: 1.2em;
+    } 
+    
     </style>
 
 <body>
@@ -137,21 +134,27 @@
                 2018 | Outstanding Graduates in Shanghai <br />
                 <br />              
 
-
-                <section class="service-section">
                 <h2 id="services">Services</h2>
                 <ul class="service-list">
-                    <li>
-                    <strong>PC Member</strong> | QUATIC'25, DL4C@ICLR'25, MSR'25 (Data and Tool Showcase Track), MSR'25 (Junior PC), ISSTA'24 (Artifact Evaluation), MSR'24 (Data and Tool Showcase Track)
-                    </li>
-                    <li>
-                    <strong>Reviewer</strong> | IEEE Transactions on Software Engineering, IEEE Transactions on Knowledge and Data Engineering, Neural Networks
-                    </li>
-                    <li>
-                    <strong>Social Media Co-Chair</strong> | FORGE'25
-                    </li>
+                  <li>
+                    <span class="service-role">PC Member</span>
+                    <span class="service-detail">
+                      QUATIC'25, DL4C@ICLR'25, MSR'25 (Data and Tool Showcase Track), MSR'25 (Junior PC),
+                      ISSTA'24 (Artifact Evaluation), MSR'24 (Data and Tool Showcase Track)
+                    </span>
+                  </li>
+                  <li>
+                    <span class="service-role">Reviewer</span>
+                    <span class="service-detail">
+                      IEEE Transactions on Software Engineering, IEEE Transactions on Knowledge and Data Engineering, Neural Networks
+                    </span>
+                  </li>
+                  <li>
+                    <span class="service-role">Social Media Co-Chair</span>
+                    <span class="service-detail">FORGE'25</span>
+                  </li>
                 </ul>
-                </section>
+  
 
                 <br />
                 <h2 id="publications">First-authored/Supervised Papers</h2>
