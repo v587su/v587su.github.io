@@ -116,223 +116,58 @@
                 
                 <h2 id="introduction">Introduction</h2>
                 
-                <div style="margin-top:3%; text-align:justify;">
-                    <p> Currently, I'm a <b>PhD student</b> at Singapore Management University
-                        supervised by <a href="http://www.mysmu.edu/faculty/davidlo/"><b>Prof. David Lo</b></a>.</p>
-                    <p> My research interest is <b>SE4AI</b> and <b>AI4SE</b>.</p>
-                    <p> The goal of my research is to build effective, sustainable, and trustworthy AI tools for human coders and software tools for AI coders.</p> 
-                    <p> I'm expected to graduate in August 2026.</p>
+                <div id="introduction-content" style="margin-top:3%; text-align:justify;">
+                    <!-- Introduction will be loaded from profile.json -->
                 </div>
 
                 <br />
                 <h2 id="awards">Awards</h2>
-                2025 | SMU SCIS Dean's List Award <br />
-                2025 | SMU SCIS Research Excellence Award (Tier 1) <br />
-                2024 | ByteDance Scholarship (15 of 400+ applicants from all areas of computer science) <br />
-                2024 | ACM SIGSOFT distinguished paper award (ISSTA 2024) <br />
-                2022 | Nomination for ACM SIGSOFT distinguished paper award (ICSE 2022) <br />
-                2020 | Merit Student in Tongji University <br />
-                2018 | Shanghai Outstanding Graduate <br />
+                <div id="awards-list">
+                    <!-- Awards will be loaded from awards.json -->
+                </div>
                 <br />              
 
                 <h2 id="services">Services</h2>
-                <strong>PC Member</strong> | DL4C'24-25, QUATIC'25, MSR'24-26 (Data and Tool Showcase Track), MSR'25 (Junior PC), ISSTA'24 (Artifact Evaluation) <br />  
-                <strong>Reviewer</strong> | TSE, TKDE, Neural Networks <br />  
-                <strong>Social Media Co-Chair</strong> | FORGE'25 <br />  
+                <div id="services-list">
+                    <!-- Services will be loaded from services.json -->
+                </div>
   
                 <br />
                 <h2 id="publications">First-authored/Supervised Papers</h2>
-
-                <strong><a href='https://www.arxiv.org/pdf/2509.24637'>Bridging Developer Instructions and Code Completion Through Instruction-Aware Fill-in-the-Middle Paradigm</a></strong><br/>
-                <span class="tag year">2025</span>
-                <span class="tag unpublished">arXiv</span>
-                <br/>
-                <u>Zhensu Sun</u>, Chengran Yang, Chao Peng, Pengfei Gao, Xiaoning Du, Li Li, David Lo<br/>
-                <br/>
-
-
-                <strong><a href='https://www.arxiv.org/pdf/2508.13666'>The Hidden Cost of Readability: How Code Formatting Silently Consumes Your LLM Budget</a></strong><br/>
-                <span class="tag year">2026</span>
-                <span class="tag ccfa">ICSE</span>
-                <br/>
-                Dangfeng Pan*, <u>Zhensu Sun</u>*, Cenyuan Zhang, David Lo, Xiaoning Du<br/>
-                <br/>
-
-                <strong><a href='./papers/SugarPaper.pdf'>Token Sugar: Making Source Code Sweeter for LLMs through Token-Efficient Shorthand</a></strong><br/>
-                <span class="tag year">2025</span>
-                <span class="tag ccfa">ASE</span>
-                <br/>
-                <u>Zhensu Sun</u>, Chengran Yang, Xiaoning Du, Zhou Yang, Li Li, David Lo.<br/>
-                <br/>
-
-                <strong><a href='https://arxiv.org/pdf/2408.01055'>LLM as Runtime Error Handler: A Promising Pathway to Adaptive Self-Healing of Software Systems</a></strong><br/>
-                <span class="tag year">2024</span>
-                <span class="tag unpublished">arXiv</span>
-                <br/>
-                <u>Zhensu Sun</u>, Haotian Zhu, Bowen Xu, Xiaoning Du, Li Li, David Lo<br/>
-                <br/>
-
-                <strong><a href='https://arxiv.org/pdf/2404.16333'>AI Coders Are Among Us: Rethinking Programming Language Grammar Towards Efficient Code Generation</a></strong><br/>
-                <span class="tag year">2024</span>
-                <span class="tag ccfa">ISSTA</span>
-                <span class="tag award">Distinguished Paper</span>
-                <br/>
-                <u>Zhensu Sun</u>, Xiaoning Du, Zhou Yang, Li Li, David Lo<br/>
-                <br/>
-
-                <strong><a href='https://arxiv.org/pdf/2408.04194'>FDI: Attack Neural Code Generation Systems through User Feedback Channel</a></strong><br/>
-                <span class="tag year">2024</span>
-                <span class="tag ccfa">ISSTA</span>
-                <br/>
-                <u>Zhensu Sun</u>, Xiaoning Du, Xiapu Luo, Fu Song, David Lo, Li Li<br/>
-                <br/>
-
-                <strong><a href='https://arxiv.org/pdf/2401.09964.pdf'>When Neural Code Completion Models Size up the Situation: Attaining Cheaper and Faster Completion through Dynamic Model Inference</a></strong><br/>
-                <span class="tag year">2024</span>
-                <span class="tag ccfa">ICSE</span>
-                <br/>
-                <u>Zhensu Sun</u>*, Xiaoning Du*, Fu Song, Shangwen Wang, Li Li<br/>
-                <br/>
-
-                <strong><a href="https://arxiv.org/pdf/2209.05948.pdf">Don't Complete It! Preventing Unhelpful Code Completion for Productive and Sustainable Neural Code Completion Systems</a></strong><br/>
-                <span class="tag year">2024</span>
-                <span class="tag ccfa">TOSEM</span>
-                <span>|</span>
-                <span class="tag year">2023</span>
-                <span class="tag ccfa">ICSE</span>
-                <span class="tag track">Poster Track</span>
-                <br/>
-                <u>Zhensu Sun</u>, Xiaoning Du, Fu Song, Shangwen Wang, Mingze Ni, Li Li, David Lo<br/>
-                <br/>
-
-                <strong><a href="https://arxiv.org/pdf/2308.14401.pdf">CodeMark: Imperceptible Watermarking for Code Datasets against Neural Code Completion Models</a></strong><br/>
-                <span class="tag year">2023</span>
-                <span class="tag ccfa">ESEC/FSE</span>
-                <br/>
-                <u>Zhensu Sun</u>*, Xiaoning Du*, Fu Song, Li Li<br/>
-                <br/>
-
-
-
-                <strong><a href="https://arxiv.org/pdf/2110.12925.pdf">CoProtector: Protect Open-Source Code against Unauthorized Training Usage with Data Poisoning</a></strong><br/>
-                <span class="tag year">2022</span>
-                <span class="tag ccfa">WWW</span>
-                <br/>
-                <u>Zhensu Sun</u>, Xiaoning Du, Fu Song, Mingze Ni, Li Li<br/>
-                <br/>
-
-                <strong><a href="https://arxiv.org/pdf/2202.06649.pdf">On the Importance of Building High-quality Training Datasets for Neural Code Search</a></strong><br/>
-                <span class="tag year">2022</span>
-                <span class="tag ccfa">ICSE</span>
-                <span class="tag award">Nominated for Distinguished Paper</span>
-                <br/>
-                <u>Zhensu Sun</u>, Li Li, Yan Liu, Xiaoning Du, Li Li<br/>
-                <br/>
-
-                <strong><a href="papers/req2lib/saner20era-p285-p-8b68ba4-43591-preprint.pdf">Req2Lib: A Semantic Neural Model for Software Library Recommendation</a></strong><br/>
-                <span class="tag year">2020</span>
-                <span class="tag ccfb">SANER</span>
-                <span class="tag track">Early Research Achievement Track</span>
-                <br/>
-                <u>Zhensu Sun</u>, Yan Liu, Ziming Cheng, Chen Yang, Pengyu Che<br/>
-                <br/>
+                <div id="first-authored-publications">
+                    <!-- First-authored publications will be loaded from publications.json -->
+                </div>
 
                 <h2 id="publications">Co-authored Papers</h2>
-                <strong><a href='https://arxiv.org/pdf/2503.14838'>Think Like Human Developers: Harnessing Community Knowledge for Structured Code Reasoning</a></strong><br/>
-                <span class="tag year">2026</span>
-                <span class="tag ccfa">ICSE</span>
-                <br/>
-                Chengran Yang, <u>Zhensu Sun</u>, Hong Jin Kang, Jieke Shi, David Lo<br/>
-                <br/>
+                <div id="co-authored-publications">
+                    <!-- Co-authored publications will be loaded from publications.json -->
+                </div>
 
-                <strong><a href="https://www.researchgate.net/profile/Shangwen-Wang/publication/377187000_Fusing_Code_Searchers/links/6598e24a6f6e450f19ce5987/Fusing-Code-Searchers.pdf">Fusing Code Searchers</a></strong><br/>
-                <span class="tag year">2024</span>
-                <span class="tag ccfa">TSE</span>
-                <br/>
-                Shangwen Wang, Mingyang Geng, Bo Lin, <u>Zhensu Sun</u>, Ming Wen, Yepang Liu, Li Li, Tegawendé F Bissyandé, Xiaoguang Mao<br/>
-                <br/>
-
-                <strong><a href="https://link.springer.com/article/10.1007/s10994-024-06539-6">Reversible jump attack to textual classifiers with modification reduction</a></strong><br/>
-                <span class="tag year">2024</span>
-                <span class="tag ccfb">Machine Learning</span>
-                <br/>
-                Mingze Ni, <u>Zhensu Sun</u>, Wei Liu<br/>
-                <br />
-
-                <strong><a href="https://arxiv.org/pdf/2303.01234.pdf">Fraud's Bargain Attack: Generating Adversarial Text Samples via Word Manipulation Process</a></strong><br/>
-                <span class="tag year">2024</span>
-                <span class="tag ccfa">TKDE</span>
-                <br/>
-                Mingze Ni, <u>Zhensu Sun</u>, Wei Liu<br/>
-                <br />
-
-                <strong><a href="https://www.researchgate.net/profile/Shangwen-Wang/publication/373141125_Natural_Language_to_Code_How_Far_Are_We/links/64dc28d625837316ee1201e5/Natural-Language-to-Code-How-Far-Are-We.pdf">Natural Language to Code: How Far Are We?</a></strong><br/>
-                <span class="tag year">2023</span>
-                <span class="tag ccfa">ESEC/FSE</span>
-                <br/>
-                Shangwen Wang, Mingyang Geng, Bo Lin, <u>Zhensu Sun</u>, Ming Wen, Yepang Liu, Li Li, Tegawendé F Bissyandé, Xiaoguang Mao<br/>
-                <br/>
-
-                <strong><a href="https://shangwenwang.github.io/files/OOPSLA-23.pdf">Two Birds with One Stone: Boosting Code Generation and Code Search via a Generative Adversarial Network</a></strong><br/>
-                <span class="tag year">2023</span>
-                <span class="tag ccfa">OOPSLA</span>
-                <br/>
-                Shangwen Wang, Bo Lin, <u>Zhensu Sun</u>, Ming Wen, Yepang Liu, Yan Lei, Xiaoguang Mao<br/>
-                <br/>
-
-                Last modified: 15 Oct 2025
+                <span id="last-modified"></span>
             </div>
             
 
             <!-- Contact Info on the Sidebar -->
             <div class="col-md-4">
-                <div style="font-family: 'Oswald', sans-serif; font-size: 32px;"><b>Zhensu Sun</b></div>
+                <div id="profile-name" style="font-family: 'Oswald', sans-serif; font-size: 32px;">
+                    <!-- Name will be loaded from profile.json -->
+                </div>
                 <br>
-                <img style="display:block; height: 65%; width: 65%;" class="img-responsive" src="pic.jpg" alt="">
+                <img id="profile-avatar" style="display:block; height: 65%; width: 65%;" class="img-responsive" src="" alt="">
 
-                <p>(Generated by AI)
+                <p id="avatar-caption"></p>
                 <br />
-                <p><b>zhensuuu@gmail.com</b><br>
-                <p>School of Computing and Information Systems<br>
-                    Singapore Management University<br>
-                    80 Stamford Road, 178902<br>
-                    Singapore <br>
-                </p>
-                <dd><a href="https://github.com/v587su">Github</a></dd>
-                <dd><a href="https://scholar.google.com/citations?user=AlpdlkYAAAAJ">Google Scholar</a></dd>
+                <p id="profile-email"></p>
+                <p id="profile-affiliation"></p>
+                <div id="profile-links">
+                    <!-- Links will be loaded from profile.json -->
+                </div>
 
                 <br />
                 <h3 id="experiences">Experiences</h3>
-                <strong>Ph.D. in Computer Science</strong><br />
-                <p>
-                    Singapore Management University <br />
-                    Singapore <br />
-                    Aug 2023 – Current <br />
-                </p>
-                <strong>Research Assistant</strong><br />
-                <p>
-                    The Hong Kong Polytechnic University <br />
-                    Hong Kong, China<br/>
-                    Feb 2023 – Jul 2023 <br/>
-                </p>
-                <strong>Research Assistant</strong><br />
-                <p>
-                    ShanghaiTech University <br />
-                    Shanghai, China<br />
-                    Oct 2021 – Jan 2023 <br/> 
-                </p>
-                <strong>M.S. in Software Engineering</strong><br />
-                <p>
-                    Tongji University <br />
-                    Shanghai, China<br />
-                    Sep 2018 - Mar 2021 <br />
-                </p>
-                <strong>B.S. in Logistics Engineering</strong><br />
-                <p>
-                    Tongji University <br />
-                    Shanghai, China<br />
-                    Sep 2014 – Jun 2018 <br />
-                </p>
+                <div id="experiences-list">
+                    <!-- Experiences will be loaded from experiences.json -->
+                </div>
             </div>
 
         </div>
@@ -340,6 +175,9 @@
         
 
     </div>
+
+    <!-- Load the main JavaScript file -->
+    <script src="./js/main.js"></script>
 
 </body>
 
