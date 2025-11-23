@@ -17,7 +17,14 @@ async function loadJSON(url) {
 // 渲染个人信息
 async function renderProfile() {
     const profile = await loadJSON('./data/profile.json');
-    if (!profile) return;
+    if (!profile) {
+        console.error('Failed to load profile.json');
+        return;
+    }
+
+    // 保存到全局变量，供其他函数复用
+    profileData = profile;
+    myNameGlobal = profile.name;
 
     // 渲染姓名
     document.getElementById('profile-name').innerHTML = `<b>${profile.name}</b>`;
@@ -161,6 +168,7 @@ function renderPublication(pub, myName) {
 // 全局变量保存数据
 let allPublications = null;
 let myNameGlobal = null;
+let profileData = null; // 保存 profile 数据，供其他函数复用
 let activeFilters = {
     featured: false,
     cofirst: false,
@@ -248,12 +256,38 @@ function filterAndRenderPublications() {
 // 渲染出版物
 async function renderPublications() {
     const data = await loadJSON('./data/publications.json');
-    const profile = await loadJSON('./data/profile.json');
-    if (!data || !profile) return;
+    
+    // 复用已加载的 profile 数据，避免重复加载
+    // 如果 profile 还没加载完成，等待一下
+    if (!profileData) {
+        // 等待最多 2 秒让 profile 加载完成
+        let waitCount = 0;
+        while (!profileData && waitCount < 20) {
+            await new Promise(resolve => setTimeout(resolve, 100));
+            waitCount++;
+        }
+    }
+    
+    // 如果 publications.json 加载失败，显示错误信息
+    if (!data) {
+        console.error('Failed to load publications.json');
+        const publicationsDiv = document.getElementById('publications-list');
+        if (publicationsDiv) {
+            publicationsDiv.innerHTML = '<p style="color: red;">Failed to load publications. Please check the console for details.</p>';
+        }
+        return;
+    }
+    
+    // 如果 profile 数据不可用，使用默认值
+    if (!profileData) {
+        console.warn('Profile data not available, using default name');
+        myNameGlobal = 'Author';
+    } else {
+        myNameGlobal = profileData.name;
+    }
 
     // 保存全局数据
     allPublications = data.publications;
-    myNameGlobal = profile.name;
 
     // 提取所有年份和会议
     const years = [...new Set(data.publications.map(pub => pub.year))].sort((a, b) => b - a);
