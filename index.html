@@ -114,6 +114,53 @@
       }
     }
     
+    /* Publications 标题和筛选栏悬浮效果 */
+    #publications-sticky-header {
+      position: sticky;
+      top: 0;
+      background-color: white;
+      z-index: 100;
+      padding-top: 20px;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+      transition: box-shadow 0.3s ease, border-bottom 0.3s ease;
+    }
+    
+    #publications-sticky-header.sticky-active {
+      border-bottom: 1px solid #ccc;
+    }
+    
+    /* 回到顶部按钮 */
+    #back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: #444;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    #back-to-top:hover {
+      background-color: #666;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    #back-to-top.show {
+      display: flex;
+    }
+    
     </style>
 
 <body>
@@ -161,30 +208,32 @@
                 </div>
 
                 <div class="section">
-                    <h2 id="publications">Publications</h2>
-                    <div style="font-size: 0.9em; color: #666; margin-top: -5px; margin-bottom: 15px;">
-                        <i style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                            <button id="filter-featured" style="font-size: 0.9em; font-family: inherit; color: #666; padding: 4px 10px; border: 1px solid #ddd; border-radius: 3px; background-color: white; cursor: pointer; font-style: italic; transition: all 0.2s; height: 28px; line-height: 1;" title="Filter representative works">
-                                <span style="font-style: normal; font-size: 1em; display: inline-block; vertical-align: middle;">📌</span> Representative
-                            </button>
-                            <button id="filter-cofirst" style="font-size: 0.9em; font-family: inherit; color: #666; padding: 4px 10px; border: 1px solid #ddd; border-radius: 3px; background-color: white; cursor: pointer; font-style: italic; transition: all 0.2s; height: 28px; line-height: 1;" title="Filter first authors & co-first authors">
-                                <span style="font-style: normal; font-size: 1em; display: inline-block; vertical-align: middle;">👤</span> First & <span style="font-style: normal; font-size: 1em; display: inline-block; vertical-align: middle;">👥</span> Co-first
-                            </button>
-                            <button id="filter-corresponding" style="font-size: 0.9em; font-family: inherit; color: #666; padding: 4px 10px; border: 1px solid #ddd; border-radius: 3px; background-color: white; cursor: pointer; font-style: italic; transition: all 0.2s; height: 28px; line-height: 1;" title="Filter corresponding authors">
-                                <span style="font-style: normal; font-size: 1em; display: inline-block; vertical-align: middle;">📧</span> Corresponding
-                            </button>
-                            <span style="color: #ddd; font-style: normal;">|</span>
-                            <select id="filter-year" style="font-size: 0.9em; font-family: inherit; color: #666; padding: 4px 10px; border: 1px solid #ddd; border-radius: 3px; background-color: white; cursor: pointer; height: 28px;">
-                                <option value="all">All Years</option>
-                            </select>
-                            <select id="filter-venue" style="font-size: 0.9em; font-family: inherit; color: #666; padding: 4px 10px; border: 1px solid #ddd; border-radius: 3px; background-color: white; cursor: pointer; height: 28px;">
-                                <option value="all">All Venues</option>
-                            </select>
-                            <span id="reset-filters" style="font-size: 0.9em; color: #6c757d; cursor: pointer; font-style: italic; text-decoration: underline; margin-left: 12px;" 
-                                  onmouseover="this.style.color='#495057'" 
-                                  onmouseout="this.style.color='#6c757d'"
-                                  title="Reset all filters">Reset</span>
-                        </i>
+                    <div id="publications-sticky-header">
+                        <h2 id="publications">Publications</h2>
+                        <div style="font-size: 0.9em; color: #666; margin-top: -5px; margin-bottom: 15px;">
+                            <i style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                <button id="filter-featured" style="font-size: 0.9em; font-family: inherit; color: #666; padding: 4px 10px; border: 1px solid #ddd; border-radius: 3px; background-color: white; cursor: pointer; font-style: italic; transition: all 0.2s; height: 28px; line-height: 1;" title="Filter representative works">
+                                    <span style="font-style: normal; font-size: 1em; display: inline-block; vertical-align: middle;">📌</span> Representative
+                                </button>
+                                <button id="filter-cofirst" style="font-size: 0.9em; font-family: inherit; color: #666; padding: 4px 10px; border: 1px solid #ddd; border-radius: 3px; background-color: white; cursor: pointer; font-style: italic; transition: all 0.2s; height: 28px; line-height: 1;" title="Filter first authors & co-first authors">
+                                    <span style="font-style: normal; font-size: 1em; display: inline-block; vertical-align: middle;">👤</span> First & <span style="font-style: normal; font-size: 1em; display: inline-block; vertical-align: middle;">👥</span> Co-first
+                                </button>
+                                <button id="filter-corresponding" style="font-size: 0.9em; font-family: inherit; color: #666; padding: 4px 10px; border: 1px solid #ddd; border-radius: 3px; background-color: white; cursor: pointer; font-style: italic; transition: all 0.2s; height: 28px; line-height: 1;" title="Filter corresponding authors">
+                                    <span style="font-style: normal; font-size: 1em; display: inline-block; vertical-align: middle;">📧</span> Corresponding
+                                </button>
+                                <span style="color: #ddd; font-style: normal;">|</span>
+                                <select id="filter-year" style="font-size: 0.9em; font-family: inherit; color: #666; padding: 4px 10px; border: 1px solid #ddd; border-radius: 3px; background-color: white; cursor: pointer; height: 28px;">
+                                    <option value="all">All Years</option>
+                                </select>
+                                <select id="filter-venue" style="font-size: 0.9em; font-family: inherit; color: #666; padding: 4px 10px; border: 1px solid #ddd; border-radius: 3px; background-color: white; cursor: pointer; height: 28px;">
+                                    <option value="all">All Venues</option>
+                                </select>
+                                <span id="reset-filters" style="font-size: 0.9em; color: #6c757d; cursor: pointer; font-style: italic; text-decoration: underline; margin-left: 12px;" 
+                                      onmouseover="this.style.color='#495057'" 
+                                      onmouseout="this.style.color='#6c757d'"
+                                      title="Reset all filters">Reset</span>
+                            </i>
+                        </div>
                     </div>
                     <div id="publications-list" class="section-content">
                         <!-- Publications will be loaded from publications.json -->
@@ -217,6 +266,9 @@
 
         </div>
     </div>
+
+    <!-- 回到顶部按钮 -->
+    <button id="back-to-top" title="回到顶部">↑</button>
 
     <!-- Load the main JavaScript file -->
     <script src="./js/main.js"></script>

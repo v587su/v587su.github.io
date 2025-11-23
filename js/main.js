@@ -425,5 +425,100 @@ document.addEventListener('DOMContentLoaded', async function() {
         console.error('Error fetching last modified time:', error);
         // 如果获取失败，不显示修改时间
     }
+    
+    // 设置 Publications 标题和筛选栏的悬浮效果
+    setupPublicationsSticky();
+    
+    // 设置回到顶部按钮
+    setupBackToTop();
 });
+
+// 设置 Publications 标题和筛选栏的悬浮效果
+function setupPublicationsSticky() {
+    const stickyHeader = document.getElementById('publications-sticky-header');
+    if (!stickyHeader) return;
+    
+    const publicationsSection = document.getElementById('publications');
+    if (!publicationsSection) return;
+    
+    let initialOffset = null;
+    
+    // 计算标题的初始位置（延迟计算以确保内容已加载）
+    function calculateInitialOffset() {
+        const rect = publicationsSection.getBoundingClientRect();
+        initialOffset = rect.top + window.pageYOffset;
+    }
+    
+    // 监听滚动事件
+    function handleScroll() {
+        if (initialOffset === null) {
+            calculateInitialOffset();
+        }
+        
+        const scrollY = window.pageYOffset || window.scrollY;
+        
+        // 当滚动超过标题初始位置时，添加激活类
+        if (scrollY > initialOffset) {
+            stickyHeader.classList.add('sticky-active');
+        } else {
+            stickyHeader.classList.remove('sticky-active');
+        }
+    }
+    
+    // 使用节流来优化性能
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                handleScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+    
+    // 延迟计算初始位置，确保内容已加载
+    setTimeout(() => {
+        calculateInitialOffset();
+        handleScroll();
+    }, 100);
+    
+    // 窗口大小改变时重新计算
+    window.addEventListener('resize', function() {
+        calculateInitialOffset();
+        handleScroll();
+    });
+}
+
+// 设置回到顶部按钮
+function setupBackToTop() {
+    const backToTopButton = document.getElementById('back-to-top');
+    if (!backToTopButton) return;
+    
+    // 点击按钮滚动到顶部
+    backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // 监听滚动事件，控制按钮显示/隐藏
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                const scrollY = window.pageYOffset || window.scrollY;
+                // 当滚动超过300px时显示按钮
+                if (scrollY > 300) {
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+}
 
