@@ -46,10 +46,6 @@
     color: 	#9830ba;
     border-color: #9830ba;
     }
-    span.ccfc {
-    color: 	#3a95db;
-    border-color: #3a95db;
-    }
     span.unpublished {
     color: 	#38a32c;
     border-color: #38a32c;
@@ -66,28 +62,57 @@
     color: 	black;
     border-color: black;
     }
-    .service-list {
-    list-style: none;
-    padding-left: 0;
+    
+    /* 统一板块间距 */
+    .section {
+      margin-bottom: 40px;
     }
-
-    .service-list li {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 8px;
+    
+    .section h2 {
+      margin-bottom: 20px;
     }
-
-    .service-role {
-      width: 180px; /* 控制左侧对齐宽度 */
-      font-weight: bold;
-      flex-shrink: 0;
+    
+    /* 限制内容区域宽度，使其在大屏幕上不会过宽 */
+    .section-content {
+      max-width: 100%;
     }
-
-    .service-detail {
-      flex: 1;
-      text-indent: -1.2em;
-      padding-left: 1.2em;
-    } 
+    
+    @media (min-width: 1200px) {
+      .section-content {
+        max-width: 900px;
+      }
+    }
+    
+    /* 桌面端侧边栏固定 */
+    @media (min-width: 992px) {
+      .col-md-4 {
+        position: sticky;
+        top: 20px;
+        align-self: flex-start;
+        padding-left: 40px;
+      }
+      
+      .col-md-8 {
+        padding-right: 20px;
+      }
+    }
+    
+    /* 移动端响应式布局 */
+    @media (max-width: 991px) {
+      .row {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .col-md-4 {
+        order: 1;
+        margin-bottom: 40px;
+      }
+      
+      .col-md-8 {
+        order: 2;
+      }
+    }
     
     </style>
 
@@ -114,33 +139,56 @@
             <!-- Entries Column -->
             <div class="col-md-8">
                 
-                <h2 id="introduction">Introduction</h2>
-                
-                <div id="introduction-content" style="margin-top:3%; text-align:justify;">
-                    <!-- Introduction will be loaded from profile.json -->
+                <div class="section">
+                    <h2 id="introduction">Introduction</h2>
+                    <div id="introduction-content" class="section-content" style="text-align:justify;">
+                        <!-- Introduction will be loaded from profile.json -->
+                    </div>
                 </div>
 
-                <br />
-                <h2 id="awards">Awards</h2>
-                <div id="awards-list">
-                    <!-- Awards will be loaded from awards.json -->
-                </div>
-                <br />              
-
-                <h2 id="services">Services</h2>
-                <div id="services-list">
-                    <!-- Services will be loaded from services.json -->
-                </div>
-  
-                <br />
-                <h2 id="publications">First-authored/Supervised Papers</h2>
-                <div id="first-authored-publications">
-                    <!-- First-authored publications will be loaded from publications.json -->
+                <div class="section">
+                    <h2 id="awards">Awards</h2>
+                    <div id="awards-list" class="section-content">
+                        <!-- Awards will be loaded from awards.json -->
+                    </div>
                 </div>
 
-                <h2 id="publications">Co-authored Papers</h2>
-                <div id="co-authored-publications">
-                    <!-- Co-authored publications will be loaded from publications.json -->
+                <div class="section">
+                    <h2 id="services">Services</h2>
+                    <div id="services-list" class="section-content">
+                        <!-- Services will be loaded from services.json -->
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 id="publications">Publications</h2>
+                    <div style="font-size: 0.9em; color: #666; margin-top: -5px; margin-bottom: 15px;">
+                        <i style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                            <button id="filter-featured" style="font-size: 0.9em; font-family: inherit; color: #666; padding: 4px 10px; border: 1px solid #ddd; border-radius: 3px; background-color: white; cursor: pointer; font-style: italic; transition: all 0.2s; height: 28px; line-height: 1;" title="Filter representative works">
+                                <span style="font-style: normal; font-size: 1em; display: inline-block; vertical-align: middle;">📌</span> Representative
+                            </button>
+                            <button id="filter-cofirst" style="font-size: 0.9em; font-family: inherit; color: #666; padding: 4px 10px; border: 1px solid #ddd; border-radius: 3px; background-color: white; cursor: pointer; font-style: italic; transition: all 0.2s; height: 28px; line-height: 1;" title="Filter first authors & co-first authors">
+                                <span style="font-style: normal; font-size: 1em; display: inline-block; vertical-align: middle;">👤</span> First & <span style="font-style: normal; font-size: 1em; display: inline-block; vertical-align: middle;">👥</span> Co-first
+                            </button>
+                            <button id="filter-corresponding" style="font-size: 0.9em; font-family: inherit; color: #666; padding: 4px 10px; border: 1px solid #ddd; border-radius: 3px; background-color: white; cursor: pointer; font-style: italic; transition: all 0.2s; height: 28px; line-height: 1;" title="Filter corresponding authors">
+                                <span style="font-style: normal; font-size: 1em; display: inline-block; vertical-align: middle;">📧</span> Corresponding
+                            </button>
+                            <span style="color: #ddd; font-style: normal;">|</span>
+                            <select id="filter-year" style="font-size: 0.9em; font-family: inherit; color: #666; padding: 4px 10px; border: 1px solid #ddd; border-radius: 3px; background-color: white; cursor: pointer; height: 28px;">
+                                <option value="all">All Years</option>
+                            </select>
+                            <select id="filter-venue" style="font-size: 0.9em; font-family: inherit; color: #666; padding: 4px 10px; border: 1px solid #ddd; border-radius: 3px; background-color: white; cursor: pointer; height: 28px;">
+                                <option value="all">All Venues</option>
+                            </select>
+                            <span id="reset-filters" style="font-size: 0.9em; color: #6c757d; cursor: pointer; font-style: italic; text-decoration: underline; margin-left: 12px;" 
+                                  onmouseover="this.style.color='#495057'" 
+                                  onmouseout="this.style.color='#6c757d'"
+                                  title="Reset all filters">Reset</span>
+                        </i>
+                    </div>
+                    <div id="publications-list" class="section-content">
+                        <!-- Publications will be loaded from publications.json -->
+                    </div>
                 </div>
 
                 <span id="last-modified"></span>
@@ -149,31 +197,25 @@
 
             <!-- Contact Info on the Sidebar -->
             <div class="col-md-4">
-                <div id="profile-name" style="font-family: 'Oswald', sans-serif; font-size: 32px;">
-                    <!-- Name will be loaded from profile.json -->
-                </div>
-                <br>
-                <img id="profile-avatar" style="display:block; height: 65%; width: 65%;" class="img-responsive" src="" alt="">
-
-                <p id="avatar-caption"></p>
-                <br />
-                <p id="profile-email"></p>
-                <p id="profile-affiliation"></p>
-                <div id="profile-links">
-                    <!-- Links will be loaded from profile.json -->
+                <div class="section">
+                    <div id="profile-name" style="font-family: 'Oswald', sans-serif; font-size: 32px;">
+                        <!-- Name will be loaded from profile.json -->
+                    </div>
+                    <br>
+                    <img id="profile-avatar" style="display:block; height: 65%; width: 65%;" class="img-responsive" src="" alt="">
+                    <p id="avatar-caption" style="font-size: 0.9em; color: #666; font-style: italic;"></p>
                 </div>
 
-                <br />
-                <h3 id="experiences">Experiences</h3>
-                <div id="experiences-list">
-                    <!-- Experiences will be loaded from experiences.json -->
+                <div class="section" style="margin-top: -30px;">
+                    <p id="profile-email"></p>
+                    <p id="profile-affiliation"></p>
+                    <div id="profile-links">
+                        <!-- Links will be loaded from profile.json -->
+                    </div>
                 </div>
             </div>
 
         </div>
-
-        
-
     </div>
 
     <!-- Load the main JavaScript file -->

@@ -10,10 +10,10 @@
     "city": "Singapore"
   },
   "introduction": [
-    "Currently, I'm a <b>PhD student</b> at Singapore Management University supervised by <a href=\"http://www.mysmu.edu/faculty/davidlo/\"><b>Prof. David Lo</b></a>.",
-    "My research interest is <b>SE4AI</b> and <b>AI4SE</b>.",
-    "The goal of my research is to build effective, sustainable, and trustworthy AI tools for human coders and software tools for AI coders.",
-    "I'm expected to graduate in August 2026."
+    "Currently, I'm a <b>PhD student</b> at Singapore Management University supervised by <a href=\"http://www.mysmu.edu/faculty/davidlo/\"><b>Prof. David Lo</b></a>, where I'm expected to graduate in August 2026. Prior to joining SMU, I received my Bachelor's and Master's degrees from Tongji University. I also gained valuable research experience working as a Research Assistant at The Hong Kong Polytechnic University and ShanghaiTech University.",
+    "My research lies at the intersection of software engineering and artificial intelligence. My mission is to engineer <b>a software ecosystem natively designed for both human developers and AI practitioners</b>, aiming to maximize the productivity of both.",
+    "My recent research interests are to address the following two key questions: 1) <i>How to redesign our software artifacts to be AI-friendly?</i> and 2) <i>How to facilitate AI to operate in our ambiguous software development environments?</i>",
+    "Feel free to reach out to me if you are also interested in exploring these topics!"
   ],
   "links": [
     {

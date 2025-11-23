@@ -1,11 +1,12 @@
 {
-  "firstAuthored": [
+  "publications": [
     {
       "title": "Bridging Developer Instructions and Code Completion Through Instruction-Aware Fill-in-the-Middle Paradigm",
       "url": "https://www.arxiv.org/pdf/2509.24637",
-      "authors": "<u>Zhensu Sun</u>, Chengran Yang, Chao Peng, Pengfei Gao, Xiaoning Du, Li Li, David Lo",
+      "authors": "Zhensu Sun, Chengran Yang, Chao Peng, Pengfei Gao, Xiaoning Du, Li Li, David Lo",
       "year": "2025",
       "venue": "arXiv",
+      "isFirstAuthored": true,
       "tags": [
         { "type": "year", "text": "2025" },
         { "type": "unpublished", "text": "arXiv" }
@@ -14,9 +15,25 @@
     {
       "title": "The Hidden Cost of Readability: How Code Formatting Silently Consumes Your LLM Budget",
       "url": "https://www.arxiv.org/pdf/2508.13666",
-      "authors": "Dangfeng Pan*, <u>Zhensu Sun</u>*, Cenyuan Zhang, David Lo, Xiaoning Du",
+      "authors": "Dangfeng Pan, Zhensu Sun, Cenyuan Zhang, David Lo, Xiaoning Du",
+      "coFirstAuthorIndices": [0, 1],
       "year": "2026",
       "venue": "ICSE",
+      "isFirstAuthored": true,
+      "isFeatured": true,
+      "tags": [
+        { "type": "year", "text": "2026" },
+        { "type": "ccfa", "text": "ICSE" }
+      ]
+    },
+    {
+      "title": "Think Like Human Developers: Harnessing Community Knowledge for Structured Code Reasoning",
+      "url": "https://arxiv.org/pdf/2503.14838",
+      "authors": "Chengran Yang, Zhensu Sun, Hong Jin Kang, Jieke Shi, David Lo",
+      "correspondingAuthorIndex": 1,
+      "year": "2026",
+      "venue": "ICSE",
+      "isFirstAuthored": true,
       "tags": [
         { "type": "year", "text": "2026" },
         { "type": "ccfa", "text": "ICSE" }
@@ -25,9 +42,11 @@
     {
       "title": "Token Sugar: Making Source Code Sweeter for LLMs through Token-Efficient Shorthand",
       "url": "./papers/SugarPaper.pdf",
-      "authors": "<u>Zhensu Sun</u>, Chengran Yang, Xiaoning Du, Zhou Yang, Li Li, David Lo.",
+      "authors": "Zhensu Sun, Chengran Yang, Xiaoning Du, Zhou Yang, Li Li, David Lo",
       "year": "2025",
       "venue": "ASE",
+      "isFirstAuthored": true,
+      "isFeatured": true,
       "tags": [
         { "type": "year", "text": "2025" },
         { "type": "ccfa", "text": "ASE" }
@@ -36,9 +55,10 @@
     {
       "title": "LLM as Runtime Error Handler: A Promising Pathway to Adaptive Self-Healing of Software Systems",
       "url": "https://arxiv.org/pdf/2408.01055",
-      "authors": "<u>Zhensu Sun</u>, Haotian Zhu, Bowen Xu, Xiaoning Du, Li Li, David Lo",
+      "authors": "Zhensu Sun, Haotian Zhu, Bowen Xu, Xiaoning Du, Li Li, David Lo",
       "year": "2024",
       "venue": "arXiv",
+      "isFirstAuthored": true,
       "tags": [
         { "type": "year", "text": "2024" },
         { "type": "unpublished", "text": "arXiv" }
@@ -47,9 +67,11 @@
     {
       "title": "AI Coders Are Among Us: Rethinking Programming Language Grammar Towards Efficient Code Generation",
       "url": "https://arxiv.org/pdf/2404.16333",
-      "authors": "<u>Zhensu Sun</u>, Xiaoning Du, Zhou Yang, Li Li, David Lo",
+      "authors": "Zhensu Sun, Xiaoning Du, Zhou Yang, Li Li, David Lo",
       "year": "2024",
       "venue": "ISSTA",
+      "isFirstAuthored": true,
+      "isFeatured": true,
       "tags": [
         { "type": "year", "text": "2024" },
         { "type": "ccfa", "text": "ISSTA" },
@@ -59,9 +81,10 @@
     {
       "title": "FDI: Attack Neural Code Generation Systems through User Feedback Channel",
       "url": "https://arxiv.org/pdf/2408.04194",
-      "authors": "<u>Zhensu Sun</u>, Xiaoning Du, Xiapu Luo, Fu Song, David Lo, Li Li",
+      "authors": "Zhensu Sun, Xiaoning Du, Xiapu Luo, Fu Song, David Lo, Li Li",
       "year": "2024",
       "venue": "ISSTA",
+      "isFirstAuthored": true,
       "tags": [
         { "type": "year", "text": "2024" },
         { "type": "ccfa", "text": "ISSTA" }
@@ -70,20 +93,35 @@
     {
       "title": "When Neural Code Completion Models Size up the Situation: Attaining Cheaper and Faster Completion through Dynamic Model Inference",
       "url": "https://arxiv.org/pdf/2401.09964.pdf",
-      "authors": "<u>Zhensu Sun</u>*, Xiaoning Du*, Fu Song, Shangwen Wang, Li Li",
+      "authors": "Zhensu Sun, Xiaoning Du, Fu Song, Shangwen Wang, Li Li",
+      "coFirstAuthorIndices": [0, 1],
       "year": "2024",
       "venue": "ICSE",
+      "isFirstAuthored": true,
       "tags": [
         { "type": "year", "text": "2024" },
         { "type": "ccfa", "text": "ICSE" }
       ]
     },
     {
+      "title": "Fusing Code Searchers",
+      "url": "https://www.researchgate.net/profile/Shangwen-Wang/publication/377187000_Fusing_Code_Searchers/links/6598e24a6f6e450f19ce5987/Fusing-Code-Searchers.pdf",
+      "authors": "Shangwen Wang, Mingyang Geng, Bo Lin, Zhensu Sun, Ming Wen, Yepang Liu, Li Li, Tegawendé F Bissyandé, Xiaoguang Mao",
+      "year": "2024",
+      "venue": "TSE",
+      "isFirstAuthored": false,
+      "tags": [
+        { "type": "year", "text": "2024" },
+        { "type": "ccfa", "text": "TSE" }
+      ]
+    },
+    {
       "title": "Don't Complete It! Preventing Unhelpful Code Completion for Productive and Sustainable Neural Code Completion Systems",
       "url": "https://arxiv.org/pdf/2209.05948.pdf",
-      "authors": "<u>Zhensu Sun</u>, Xiaoning Du, Fu Song, Shangwen Wang, Mingze Ni, Li Li, David Lo",
+      "authors": "Zhensu Sun, Xiaoning Du, Fu Song, Shangwen Wang, Mingze Ni, Li Li, David Lo",
       "year": "2024",
       "venue": "TOSEM",
+      "isFirstAuthored": true,
       "tags": [
         { "type": "year", "text": "2024" },
         { "type": "ccfa", "text": "TOSEM" },
@@ -94,22 +132,73 @@
       ]
     },
     {
+      "title": "Reversible jump attack to textual classifiers with modification reduction",
+      "url": "https://link.springer.com/article/10.1007/s10994-024-06539-6",
+      "authors": "Mingze Ni, Zhensu Sun, Wei Liu",
+      "year": "2024",
+      "venue": "Machine Learning",
+      "isFirstAuthored": false,
+      "tags": [
+        { "type": "year", "text": "2024" },
+        { "type": "ccfb", "text": "Machine Learning" }
+      ]
+    },
+    {
+      "title": "Fraud's Bargain Attack: Generating Adversarial Text Samples via Word Manipulation Process",
+      "url": "https://arxiv.org/pdf/2303.01234.pdf",
+      "authors": "Mingze Ni, Zhensu Sun, Wei Liu",
+      "year": "2024",
+      "venue": "TKDE",
+      "isFirstAuthored": false,
+      "tags": [
+        { "type": "year", "text": "2024" },
+        { "type": "ccfa", "text": "TKDE" }
+      ]
+    },
+    {
       "title": "CodeMark: Imperceptible Watermarking for Code Datasets against Neural Code Completion Models",
       "url": "https://arxiv.org/pdf/2308.14401.pdf",
-      "authors": "<u>Zhensu Sun</u>*, Xiaoning Du*, Fu Song, Li Li",
+      "authors": "Zhensu Sun, Xiaoning Du, Fu Song, Li Li",
+      "coFirstAuthorIndices": [0, 1],
       "year": "2023",
       "venue": "ESEC/FSE",
+      "isFirstAuthored": true,
       "tags": [
         { "type": "year", "text": "2023" },
         { "type": "ccfa", "text": "ESEC/FSE" }
       ]
     },
     {
+      "title": "Natural Language to Code: How Far Are We?",
+      "url": "https://www.researchgate.net/profile/Shangwen-Wang/publication/373141125_Natural_Language_to_Code_How_Far_Are_We/links/64dc28d625837316ee1201e5/Natural-Language-to-Code-How-Far-Are-We.pdf",
+      "authors": "Shangwen Wang, Mingyang Geng, Bo Lin, Zhensu Sun, Ming Wen, Yepang Liu, Li Li, Tegawendé F Bissyandé, Xiaoguang Mao",
+      "year": "2023",
+      "venue": "ESEC/FSE",
+      "isFirstAuthored": false,
+      "tags": [
+        { "type": "year", "text": "2023" },
+        { "type": "ccfa", "text": "ESEC/FSE" }
+      ]
+    },
+    {
+      "title": "Two Birds with One Stone: Boosting Code Generation and Code Search via a Generative Adversarial Network",
+      "url": "https://shangwenwang.github.io/files/OOPSLA-23.pdf",
+      "authors": "Shangwen Wang, Bo Lin, Zhensu Sun, Ming Wen, Yepang Liu, Yan Lei, Xiaoguang Mao",
+      "year": "2023",
+      "venue": "OOPSLA",
+      "isFirstAuthored": false,
+      "tags": [
+        { "type": "year", "text": "2023" },
+        { "type": "ccfa", "text": "OOPSLA" }
+      ]
+    },
+    {
       "title": "CoProtector: Protect Open-Source Code against Unauthorized Training Usage with Data Poisoning",
       "url": "https://arxiv.org/pdf/2110.12925.pdf",
-      "authors": "<u>Zhensu Sun</u>, Xiaoning Du, Fu Song, Mingze Ni, Li Li",
+      "authors": "Zhensu Sun, Xiaoning Du, Fu Song, Mingze Ni, Li Li",
       "year": "2022",
       "venue": "WWW",
+      "isFirstAuthored": true,
       "tags": [
         { "type": "year", "text": "2022" },
         { "type": "ccfa", "text": "WWW" }
@@ -118,9 +207,10 @@
     {
       "title": "On the Importance of Building High-quality Training Datasets for Neural Code Search",
       "url": "https://arxiv.org/pdf/2202.06649.pdf",
-      "authors": "<u>Zhensu Sun</u>, Li Li, Yan Liu, Xiaoning Du, Li Li",
+      "authors": "Zhensu Sun, Li Li, Yan Liu, Xiaoning Du, Li Li",
       "year": "2022",
       "venue": "ICSE",
+      "isFirstAuthored": true,
       "tags": [
         { "type": "year", "text": "2022" },
         { "type": "ccfa", "text": "ICSE" },
@@ -130,83 +220,15 @@
     {
       "title": "Req2Lib: A Semantic Neural Model for Software Library Recommendation",
       "url": "papers/req2lib/saner20era-p285-p-8b68ba4-43591-preprint.pdf",
-      "authors": "<u>Zhensu Sun</u>, Yan Liu, Ziming Cheng, Chen Yang, Pengyu Che",
+      "authors": "Zhensu Sun, Yan Liu, Ziming Cheng, Chen Yang, Pengyu Che",
       "year": "2020",
       "venue": "SANER",
+      "isFirstAuthored": true,
       "tags": [
         { "type": "year", "text": "2020" },
         { "type": "ccfb", "text": "SANER" },
         { "type": "track", "text": "Early Research Achievement Track" }
       ]
     }
-  ],
-  "coAuthored": [
-    {
-      "title": "Think Like Human Developers: Harnessing Community Knowledge for Structured Code Reasoning",
-      "url": "https://arxiv.org/pdf/2503.14838",
-      "authors": "Chengran Yang, <u>Zhensu Sun</u>, Hong Jin Kang, Jieke Shi, David Lo",
-      "year": "2026",
-      "venue": "ICSE",
-      "tags": [
-        { "type": "year", "text": "2026" },
-        { "type": "ccfa", "text": "ICSE" }
-      ]
-    },
-    {
-      "title": "Fusing Code Searchers",
-      "url": "https://www.researchgate.net/profile/Shangwen-Wang/publication/377187000_Fusing_Code_Searchers/links/6598e24a6f6e450f19ce5987/Fusing-Code-Searchers.pdf",
-      "authors": "Shangwen Wang, Mingyang Geng, Bo Lin, <u>Zhensu Sun</u>, Ming Wen, Yepang Liu, Li Li, Tegawendé F Bissyandé, Xiaoguang Mao",
-      "year": "2024",
-      "venue": "TSE",
-      "tags": [
-        { "type": "year", "text": "2024" },
-        { "type": "ccfa", "text": "TSE" }
-      ]
-    },
-    {
-      "title": "Reversible jump attack to textual classifiers with modification reduction",
-      "url": "https://link.springer.com/article/10.1007/s10994-024-06539-6",
-      "authors": "Mingze Ni, <u>Zhensu Sun</u>, Wei Liu",
-      "year": "2024",
-      "venue": "Machine Learning",
-      "tags": [
-        { "type": "year", "text": "2024" },
-        { "type": "ccfb", "text": "Machine Learning" }
-      ]
-    },
-    {
-      "title": "Fraud's Bargain Attack: Generating Adversarial Text Samples via Word Manipulation Process",
-      "url": "https://arxiv.org/pdf/2303.01234.pdf",
-      "authors": "Mingze Ni, <u>Zhensu Sun</u>, Wei Liu",
-      "year": "2024",
-      "venue": "TKDE",
-      "tags": [
-        { "type": "year", "text": "2024" },
-        { "type": "ccfa", "text": "TKDE" }
-      ]
-    },
-    {
-      "title": "Natural Language to Code: How Far Are We?",
-      "url": "https://www.researchgate.net/profile/Shangwen-Wang/publication/373141125_Natural_Language_to_Code_How_Far_Are_We/links/64dc28d625837316ee1201e5/Natural-Language-to-Code-How-Far-Are-We.pdf",
-      "authors": "Shangwen Wang, Mingyang Geng, Bo Lin, <u>Zhensu Sun</u>, Ming Wen, Yepang Liu, Li Li, Tegawendé F Bissyandé, Xiaoguang Mao",
-      "year": "2023",
-      "venue": "ESEC/FSE",
-      "tags": [
-        { "type": "year", "text": "2023" },
-        { "type": "ccfa", "text": "ESEC/FSE" }
-      ]
-    },
-    {
-      "title": "Two Birds with One Stone: Boosting Code Generation and Code Search via a Generative Adversarial Network",
-      "url": "https://shangwenwang.github.io/files/OOPSLA-23.pdf",
-      "authors": "Shangwen Wang, Bo Lin, <u>Zhensu Sun</u>, Ming Wen, Yepang Liu, Yan Lei, Xiaoguang Mao",
-      "year": "2023",
-      "venue": "OOPSLA",
-      "tags": [
-        { "type": "year", "text": "2023" },
-        { "type": "ccfa", "text": "OOPSLA" }
-      ]
-    }
   ]
 }
-
