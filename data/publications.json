@@ -1,6 +1,20 @@
 {
   "publications": [
     {
+      "title": "FastMCC: Multiple-hypotheses Code Completion with Natural Language Phrases as Alternative Suggestions",
+      "url": "./papers/FastMCC.pdf",
+      "authors": "Zhensu Sun",
+      "year": "2026",
+      "venue": "ICSE",
+      "isFirstAuthored": true,
+      "isFeatured": false,
+      "tags": [
+        { "type": "year", "text": "2026" },
+        { "type": "ccfa", "text": "ICSE" },
+        { "type": "track", "text": "Student Research Competition" }
+      ]
+    },
+    {
       "title": "Bridging Developer Instructions and Code Completion Through Instruction-Aware Fill-in-the-Middle Paradigm",
       "url": "https://www.arxiv.org/pdf/2509.24637",
       "authors": "Zhensu Sun, Chengran Yang, Chao Peng, Pengfei Gao, Xiaoning Du, Li Li, David Lo",
@@ -41,7 +55,7 @@
     },
     {
       "title": "Token Sugar: Making Source Code Sweeter for LLMs through Token-Efficient Shorthand",
-      "url": "./papers/SugarPaper.pdf",
+      "url": "https://www.arxiv.org/pdf/2512.08266",
       "authors": "Zhensu Sun, Chengran Yang, Xiaoning Du, Zhou Yang, Li Li, David Lo",
       "year": "2025",
       "venue": "ASE",
@@ -219,7 +233,7 @@
     },
     {
       "title": "Req2Lib: A Semantic Neural Model for Software Library Recommendation",
-      "url": "papers/req2lib/saner20era-p285-p-8b68ba4-43591-preprint.pdf",
+      "url": "https://arxiv.org/pdf/2005.11757",
       "authors": "Zhensu Sun, Yan Liu, Ziming Cheng, Chen Yang, Pengyu Che",
       "year": "2020",
       "venue": "SANER",
