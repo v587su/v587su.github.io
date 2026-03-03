@@ -37,7 +37,8 @@
       "isFeatured": true,
       "tags": [
         { "type": "year", "text": "2026" },
-        { "type": "ccfa", "text": "ICSE" }
+        { "type": "ccfa", "text": "ICSE" },
+        { "type": "award", "text": "Distinguished Paper" }
       ]
     },
     {
@@ -50,7 +51,57 @@
       "isFirstAuthored": true,
       "tags": [
         { "type": "year", "text": "2026" },
-        { "type": "ccfa", "text": "ICSE" }
+        { "type": "ccfa", "text": "ICSE" },
+        { "type": "award", "text": "Distinguished Paper" }
+      ]
+    },
+    {
+      "title": "CodeOCR: On the Effectiveness of Vision Language Models in Code Understanding",
+      "url": "https://arxiv.org/pdf/2602.01785",
+      "authors": "Yuling Shi, Chaoxiang Xie, Zhensu Sun, Yeheng Chen, Chenxu Zhang, Longfei Yun, Chengcheng Wan, Hongyu Zhang, David Lo, Xiaodong Gu",
+      "year": "2026",
+      "venue": "arXiv",
+      "isFirstAuthored": false,
+      "tags": [
+        { "type": "year", "text": "2026" },
+        { "type": "unpublished", "text": "arXiv" }
+      ]
+    },
+    {
+      "title": "Rethinking the Value of Agent-Generated Tests for LLM-Based Software Engineering Agents",
+      "url": "https://arxiv.org/pdf/2602.07900",
+      "authors": "Zhi Chen, Zhensu Sun, Yuling Shi, Chao Peng, Xiaodong Gu, David Lo, Lingxiao Jiang",
+      "year": "2026",
+      "venue": "arXiv",
+      "isFirstAuthored": false,
+      "correspondingAuthorIndex": 1,
+      "tags": [
+        { "type": "year", "text": "2026" },
+        { "type": "unpublished", "text": "arXiv" }
+      ]
+    },
+    {
+      "title": "Autoregressive, Yet Revisable: In Decoding Revision for Secure Code Generation",
+      "url": "https://arxiv.org/pdf/2602.01187",
+      "authors": "Chengran Yang, Zichao Wei, Heminghao Deng, Jinfeng Jiang, Zhensu Sun, Ting Zhang, Tianyi Wu, Ming Wen, David Lo",
+      "year": "2026",
+      "venue": "arXiv",
+      "isFirstAuthored": false,
+      "tags": [
+        { "type": "year", "text": "2026" },
+        { "type": "unpublished", "text": "arXiv" }
+      ]
+    },
+    {
+      "title": "LIDL: LLM Integration Defect Localization via Knowledge Graph-Enhanced Multi-Agent Analysis",
+      "url": "https://arxiv.org/pdf/2601.05539",
+      "authors": "Gou Tan, Zilong He, Min Li, Pengfei Chen, Jieke Shi, Zhensu Sun, Ting Zhang, Danwen Chen, Lwin Khin Shar, Chuanfu Zhang, David Lo",
+      "year": "2026",
+      "venue": "arXiv",
+      "isFirstAuthored": false,
+      "tags": [
+        { "type": "year", "text": "2026" },
+        { "type": "unpublished", "text": "arXiv" }
       ]
     },
     {
@@ -67,15 +118,15 @@
       ]
     },
     {
-      "title": "LLM as Runtime Error Handler: A Promising Pathway to Adaptive Self-Healing of Software Systems",
+      "title": "Healer: Adaptive Self-Healing of Software Systems",
       "url": "https://arxiv.org/pdf/2408.01055",
       "authors": "Zhensu Sun, Haotian Zhu, Bowen Xu, Xiaoning Du, Li Li, David Lo",
-      "year": "2024",
-      "venue": "arXiv",
+      "year": "2026",
+      "venue": "CACM",
       "isFirstAuthored": true,
       "tags": [
-        { "type": "year", "text": "2024" },
-        { "type": "unpublished", "text": "arXiv" }
+        { "type": "year", "text": "2026" },
+        { "type": "ccfb", "text": "CACM" }
       ]
     },
     {

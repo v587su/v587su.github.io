@@ -120,10 +120,14 @@
       top: 0;
       background-color: white;
       z-index: 100;
-      padding-top: 20px;
-      padding-bottom: 15px;
-      margin-bottom: 15px;
+      padding-top: 0;
+      padding-bottom: 6px;
+      margin-bottom: 6px;
       transition: box-shadow 0.3s ease, border-bottom 0.3s ease;
+    }
+
+    #publications-sticky-header h2 {
+      margin-top: 0;
     }
     
     #publications-sticky-header.sticky-active {
@@ -210,10 +214,10 @@
                 <div class="section">
                     <div id="publications-sticky-header">
                         <h2 id="publications">Publications</h2>
-                        <div style="font-size: 0.9em; color: #666; margin-top: -5px; margin-bottom: 15px;">
+                        <div style="font-size: 0.9em; color: #666; margin-top: -5px; margin-bottom: 6px;">
                             <i style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                                 <button id="filter-featured" style="font-size: 0.9em; font-family: inherit; color: #666; padding: 4px 10px; border: 1px solid #ddd; border-radius: 3px; background-color: white; cursor: pointer; font-style: italic; transition: all 0.2s; height: 28px; line-height: 1;" title="Filter representative works">
-                                    <span style="font-style: normal; font-size: 1em; display: inline-block; vertical-align: middle;">📌</span> Representative
+                                    <span style="font-style: normal; font-size: 1em; display: inline-block; vertical-align: middle;">❤️</span> Representative
                                 </button>
                                 <button id="filter-cofirst" style="font-size: 0.9em; font-family: inherit; color: #666; padding: 4px 10px; border: 1px solid #ddd; border-radius: 3px; background-color: white; cursor: pointer; font-style: italic; transition: all 0.2s; height: 28px; line-height: 1;" title="Filter first authors & co-first authors">
                                     <span style="font-style: normal; font-size: 1em; display: inline-block; vertical-align: middle;">👤</span> First & <span style="font-style: normal; font-size: 1em; display: inline-block; vertical-align: middle;">👥</span> Co-first
@@ -271,7 +275,7 @@
     <button id="back-to-top" title="回到顶部">↑</button>
 
     <!-- Load the main JavaScript file -->
-    <script src="./js/main.js"></script>
+    <script src="./js/main.js?v=20260303"></script>
 
 </body>
 

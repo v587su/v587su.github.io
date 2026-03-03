@@ -3,7 +3,7 @@
 // 加载JSON数据的通用函数
 async function loadJSON(url) {
     try {
-        const response = await fetch(url);
+        const response = await fetch(url, { cache: 'no-store' });
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -153,7 +153,7 @@ function renderPublication(pub, myName) {
     );
     
     // 如果是代表作，添加图标
-    const featuredIcon = pub.isFeatured ? '<span style="color: #E74C3C; margin-right: 5px;">📌</span>' : '';
+    const featuredIcon = pub.isFeatured ? '<span style="color: #E74C3C; margin-right: 5px;">❤️</span>' : '';
     
     pubDiv.innerHTML = `
         ${featuredIcon}<strong><a href='${pub.url}'>${pub.title}</a></strong><br/>
@@ -203,21 +203,32 @@ function resetFilterButtonStyles() {
 function filterAndRenderPublications() {
     if (!allPublications || !myNameGlobal) return;
 
+    // 按“我的作者位置优先级”计算排序等级
+    const getMyRoleRank = (pub) => {
+        const authors = (pub.authors || '').split(',').map(author => author.trim());
+        const myIndex = authors.indexOf(myNameGlobal);
+
+        if (myIndex === 0) return 0; // 我的一作
+        if (Array.isArray(pub.coFirstAuthorIndices) && pub.coFirstAuthorIndices.includes(myIndex)) return 1; // 我的共一
+        if (pub.correspondingAuthorIndex === myIndex) return 2; // 我的通讯
+        return 3; // 其他
+    };
+
     // 筛选论文
     let filtered = allPublications.filter(pub => {
+        const myRole = getMyRoleRank(pub);
+
         // 代表作筛选
         if (activeFilters.featured && !pub.isFeatured) return false;
         
         // 第一作者和共同第一作者筛选
         if (activeFilters.cofirst) {
-            // 筛选第一作者（isFirstAuthored === true）或共同第一作者（有 coFirstAuthorIndices）
-            const isFirstAuthor = pub.isFirstAuthored === true;
-            const isCoFirstAuthor = pub.coFirstAuthorIndices && pub.coFirstAuthorIndices.length > 0;
-            if (!isFirstAuthor && !isCoFirstAuthor) return false;
+            const isMyFirstOrCoFirst = myRole === 0 || myRole === 1;
+            if (!isMyFirstOrCoFirst) return false;
         }
         
         // 通讯作者筛选
-        if (activeFilters.corresponding && pub.correspondingAuthorIndex === undefined) return false;
+        if (activeFilters.corresponding && myRole !== 2) return false;
         
         // 年份筛选
         if (activeFilters.year !== 'all' && pub.year !== activeFilters.year) return false;
@@ -228,27 +239,31 @@ function filterAndRenderPublications() {
         return true;
     });
 
-    // 分类
-    let firstAuthored = filtered.filter(pub => pub.isFirstAuthored === true);
-    let coAuthored = filtered.filter(pub => pub.isFirstAuthored === false);
-
-    // 排序（代表作置顶）
-    const sortByFeatured = (a, b) => {
-        if (a.isFeatured && !b.isFeatured) return -1;
-        if (!a.isFeatured && b.isFeatured) return 1;
-        return 0;
+    const isUnpublished = (pub) => {
+        const hasUnpublishedTag = Array.isArray(pub.tags) && pub.tags.some(tag => tag.type === 'unpublished');
+        return hasUnpublishedTag || pub.venue === 'arXiv';
     };
-    firstAuthored.sort(sortByFeatured);
-    coAuthored.sort(sortByFeatured);
 
-    // 合并论文列表，第一作者论文在前
-    const allPubs = [...firstAuthored, ...coAuthored];
+    filtered.sort((a, b) => {
+        const yearA = parseInt(a.year, 10);
+        const yearB = parseInt(b.year, 10);
+        const yearDiff = (Number.isNaN(yearB) ? -Infinity : yearB) - (Number.isNaN(yearA) ? -Infinity : yearA);
+        if (yearDiff !== 0) return yearDiff;
+
+        const roleDiff = getMyRoleRank(a) - getMyRoleRank(b);
+        if (roleDiff !== 0) return roleDiff;
+
+        const publishDiff = Number(isUnpublished(a)) - Number(isUnpublished(b)); // 已发表(0) 在前，未发表(1) 在后
+        if (publishDiff !== 0) return publishDiff;
+
+        return (a.title || '').localeCompare(b.title || '');
+    });
 
     // 清空并重新渲染
     const publicationsDiv = document.getElementById('publications-list');
     publicationsDiv.innerHTML = '';
 
-    allPubs.forEach(pub => {
+    filtered.forEach(pub => {
         publicationsDiv.appendChild(renderPublication(pub, myNameGlobal));
     });
 }
@@ -521,4 +536,3 @@ function setupBackToTop() {
         }
     });
 }
-
