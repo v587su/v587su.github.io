@@ -1,6 +1,19 @@
 {
   "publications": [
     {
+      "title": "Executing as You Generate: Hiding Execution Latency in LLM Code Generation",
+      "url": "./papers/StreamExec.pdf",
+      "authors": "Zhensu Sun, Zhihao Lin, Zhi Chen, Chengran Yang, Mingyi Zhou, Li Li, David Lo",
+      "coFirstAuthorIndices": [0, 1],
+      "year": "2026",
+      "venue": "ASE",
+      "isFirstAuthored": true,
+      "tags": [
+        { "type": "year", "text": "2026" },
+        { "type": "ccfa", "text": "ASE" }
+      ]
+    },
+    {
       "title": "FastMCC: Multiple-hypotheses Code Completion with Natural Language Phrases as Alternative Suggestions",
       "url": "./papers/FastMCC.pdf",
       "authors": "Zhensu Sun",
