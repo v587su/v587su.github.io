@@ -6,11 +6,11 @@
       "authors": "Zhensu Sun, Zhihao Lin, Zhi Chen, Chengran Yang, Mingyi Zhou, Li Li, David Lo",
       "coFirstAuthorIndices": [0, 1],
       "year": "2026",
-      "venue": "ASE",
+      "venue": "arXiv",
       "isFirstAuthored": true,
       "tags": [
         { "type": "year", "text": "2026" },
-        { "type": "ccfa", "text": "ASE" }
+        { "type": "unpublished", "text": "arXiv" }
       ]
     },
     {
