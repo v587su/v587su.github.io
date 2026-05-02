@@ -5,7 +5,6 @@
 // - Last modified date (from HTTP Last-Modified header)
 
 let activeFilters = {
-    featured: false,
     cofirst: false,
     corresponding: false,
     year: 'all',
@@ -26,7 +25,6 @@ function updateFilterButtonStyle(buttonId, isActive, activeColor) {
 }
 
 function resetFilterButtonStyles() {
-    updateFilterButtonStyle('filter-featured', false, '#E74C3C');
     updateFilterButtonStyle('filter-cofirst', false, '#4A90E2');
     updateFilterButtonStyle('filter-corresponding', false, '#E94B3C');
 }
@@ -34,14 +32,12 @@ function resetFilterButtonStyles() {
 function applyPublicationFilters() {
     const pubs = document.querySelectorAll('#publications-list .publication');
     pubs.forEach(pub => {
-        const isFeatured = pub.dataset.featured === 'true';
         const myRole = parseInt(pub.dataset.myRole, 10);
         const year = pub.dataset.year;
         const venue = pub.dataset.venue;
 
         let visible = true;
 
-        if (activeFilters.featured && !isFeatured) visible = false;
         if (activeFilters.cofirst && !(myRole === 0 || myRole === 1)) visible = false;
         if (activeFilters.corresponding && myRole !== 2) visible = false;
         if (activeFilters.year !== 'all' && year !== activeFilters.year) visible = false;
@@ -52,12 +48,6 @@ function applyPublicationFilters() {
 }
 
 function setupPublicationFilters() {
-    document.getElementById('filter-featured').addEventListener('click', function() {
-        activeFilters.featured = !activeFilters.featured;
-        updateFilterButtonStyle('filter-featured', activeFilters.featured, '#E74C3C');
-        applyPublicationFilters();
-    });
-
     document.getElementById('filter-cofirst').addEventListener('click', function() {
         if (activeFilters.cofirst) {
             activeFilters.cofirst = false;
@@ -101,7 +91,6 @@ function setupPublicationFilters() {
 
     document.getElementById('reset-filters').addEventListener('click', function() {
         activeFilters = {
-            featured: false,
             cofirst: false,
             corresponding: false,
             year: 'all',
