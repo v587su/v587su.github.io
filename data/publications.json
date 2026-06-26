@@ -1,8 +1,20 @@
 {
   "publications": [
     {
+      "title": "To Run or Not to Run: Analyzing the Cost-Effectiveness of Code Execution in LLM-Based Program Repair",
+      "url": "https://arxiv.org/pdf/2606.26978",
+      "authors": "Zhihao Lin, Junhua Zhu, Mingyi Zhou, Xin Wang, Zhensu Sun, Renyu Yang, David Lo, Li Li",
+      "year": "2026",
+      "venue": "ISSTA",
+      "isFirstAuthored": false,
+      "tags": [
+        { "type": "year", "text": "2026" },
+        { "type": "ccfa", "text": "ISSTA" }
+      ]
+    },
+    {
       "title": "Executing as You Generate: Hiding Execution Latency in LLM Code Generation",
-      "url": "./papers/StreamExec.pdf",
+      "url": "https://arxiv.org/pdf/2604.00491",
       "authors": "Zhensu Sun, Zhihao Lin, Zhi Chen, Chengran Yang, Mingyi Zhou, Li Li, David Lo",
       "coFirstAuthorIndices": [0, 1],
       "year": "2026",
@@ -14,28 +26,51 @@
       ]
     },
     {
-      "title": "FastMCC: Multiple-hypotheses Code Completion with Natural Language Phrases as Alternative Suggestions",
-      "url": "./papers/FastMCC.pdf",
-      "authors": "Zhensu Sun",
+      "title": "Rethinking the Value of Agent-Generated Tests for LLM-Based Software Engineering Agents",
+      "url": "https://arxiv.org/pdf/2602.07900",
+      "authors": "Zhi Chen, Zhensu Sun, Yuling Shi, Chao Peng, Xiaodong Gu, David Lo, Lingxiao Jiang",
       "year": "2026",
-      "venue": "ICSE",
-      "isFirstAuthored": true,
-      "isFeatured": false,
+      "venue": "arXiv",
+      "isFirstAuthored": false,
+      "correspondingAuthorIndex": 1,
       "tags": [
         { "type": "year", "text": "2026" },
-        { "type": "ccfa", "text": "ICSE" },
-        { "type": "track", "text": "Student Research Competition" }
+        { "type": "unpublished", "text": "arXiv" }
       ]
     },
     {
-      "title": "Bridging Developer Instructions and Code Completion Through Instruction-Aware Fill-in-the-Middle Paradigm",
-      "url": "https://www.arxiv.org/pdf/2509.24637",
-      "authors": "Zhensu Sun, Chengran Yang, Chao Peng, Pengfei Gao, Xiaoning Du, Li Li, David Lo",
-      "year": "2025",
+      "title": "CodeOCR: On the Effectiveness of Vision Language Models in Code Understanding",
+      "url": "https://arxiv.org/pdf/2602.01785",
+      "authors": "Yuling Shi, Chaoxiang Xie, Zhensu Sun, Yeheng Chen, Chenxu Zhang, Longfei Yun, Chengcheng Wan, Hongyu Zhang, David Lo, Xiaodong Gu",
+      "year": "2026",
       "venue": "arXiv",
-      "isFirstAuthored": true,
+      "isFirstAuthored": false,
       "tags": [
-        { "type": "year", "text": "2025" },
+        { "type": "year", "text": "2026" },
+        { "type": "unpublished", "text": "arXiv" }
+      ]
+    },
+    {
+      "title": "Autoregressive, Yet Revisable: In Decoding Revision for Secure Code Generation",
+      "url": "https://arxiv.org/pdf/2602.01187",
+      "authors": "Chengran Yang, Zichao Wei, Heminghao Deng, Jinfeng Jiang, Zhensu Sun, Ting Zhang, Tianyi Wu, Ming Wen, David Lo",
+      "year": "2026",
+      "venue": "arXiv",
+      "isFirstAuthored": false,
+      "tags": [
+        { "type": "year", "text": "2026" },
+        { "type": "unpublished", "text": "arXiv" }
+      ]
+    },
+    {
+      "title": "LIDL: LLM Integration Defect Localization via Knowledge Graph-Enhanced Multi-Agent Analysis",
+      "url": "https://arxiv.org/pdf/2601.05539",
+      "authors": "Gou Tan, Zilong He, Min Li, Pengfei Chen, Jieke Shi, Zhensu Sun, Ting Zhang, Danwen Chen, Lwin Khin Shar, Chuanfu Zhang, David Lo",
+      "year": "2026",
+      "venue": "arXiv",
+      "isFirstAuthored": false,
+      "tags": [
+        { "type": "year", "text": "2026" },
         { "type": "unpublished", "text": "arXiv" }
       ]
     },
@@ -69,52 +104,29 @@
       ]
     },
     {
-      "title": "CodeOCR: On the Effectiveness of Vision Language Models in Code Understanding",
-      "url": "https://arxiv.org/pdf/2602.01785",
-      "authors": "Yuling Shi, Chaoxiang Xie, Zhensu Sun, Yeheng Chen, Chenxu Zhang, Longfei Yun, Chengcheng Wan, Hongyu Zhang, David Lo, Xiaodong Gu",
+      "title": "Healer: Adaptive Self-Healing of Software Systems",
+      "url": "https://arxiv.org/pdf/2408.01055",
+      "authors": "Zhensu Sun, Haotian Zhu, Bowen Xu, Xiaoning Du, Li Li, David Lo",
       "year": "2026",
-      "venue": "arXiv",
-      "isFirstAuthored": false,
+      "venue": "CACM",
+      "isFirstAuthored": true,
       "tags": [
         { "type": "year", "text": "2026" },
-        { "type": "unpublished", "text": "arXiv" }
+        { "type": "ccfb", "text": "CACM" }
       ]
     },
     {
-      "title": "Rethinking the Value of Agent-Generated Tests for LLM-Based Software Engineering Agents",
-      "url": "https://arxiv.org/pdf/2602.07900",
-      "authors": "Zhi Chen, Zhensu Sun, Yuling Shi, Chao Peng, Xiaodong Gu, David Lo, Lingxiao Jiang",
+      "title": "FastMCC: Multiple-hypotheses Code Completion with Natural Language Phrases as Alternative Suggestions",
+      "url": "./papers/FastMCC.pdf",
+      "authors": "Zhensu Sun",
       "year": "2026",
-      "venue": "arXiv",
-      "isFirstAuthored": false,
-      "correspondingAuthorIndex": 1,
+      "venue": "ICSE",
+      "isFirstAuthored": true,
+      "isFeatured": false,
       "tags": [
         { "type": "year", "text": "2026" },
-        { "type": "unpublished", "text": "arXiv" }
-      ]
-    },
-    {
-      "title": "Autoregressive, Yet Revisable: In Decoding Revision for Secure Code Generation",
-      "url": "https://arxiv.org/pdf/2602.01187",
-      "authors": "Chengran Yang, Zichao Wei, Heminghao Deng, Jinfeng Jiang, Zhensu Sun, Ting Zhang, Tianyi Wu, Ming Wen, David Lo",
-      "year": "2026",
-      "venue": "arXiv",
-      "isFirstAuthored": false,
-      "tags": [
-        { "type": "year", "text": "2026" },
-        { "type": "unpublished", "text": "arXiv" }
-      ]
-    },
-    {
-      "title": "LIDL: LLM Integration Defect Localization via Knowledge Graph-Enhanced Multi-Agent Analysis",
-      "url": "https://arxiv.org/pdf/2601.05539",
-      "authors": "Gou Tan, Zilong He, Min Li, Pengfei Chen, Jieke Shi, Zhensu Sun, Ting Zhang, Danwen Chen, Lwin Khin Shar, Chuanfu Zhang, David Lo",
-      "year": "2026",
-      "venue": "arXiv",
-      "isFirstAuthored": false,
-      "tags": [
-        { "type": "year", "text": "2026" },
-        { "type": "unpublished", "text": "arXiv" }
+        { "type": "ccfa", "text": "ICSE" },
+        { "type": "track", "text": "Student Research Competition" }
       ]
     },
     {
@@ -131,15 +143,27 @@
       ]
     },
     {
-      "title": "Healer: Adaptive Self-Healing of Software Systems",
-      "url": "https://arxiv.org/pdf/2408.01055",
-      "authors": "Zhensu Sun, Haotian Zhu, Bowen Xu, Xiaoning Du, Li Li, David Lo",
-      "year": "2026",
-      "venue": "CACM",
+      "title": "Bridging Developer Instructions and Code Completion Through Instruction-Aware Fill-in-the-Middle Paradigm",
+      "url": "https://www.arxiv.org/pdf/2509.24637",
+      "authors": "Zhensu Sun, Chengran Yang, Chao Peng, Pengfei Gao, Xiaoning Du, Li Li, David Lo",
+      "year": "2025",
+      "venue": "arXiv",
       "isFirstAuthored": true,
       "tags": [
-        { "type": "year", "text": "2026" },
-        { "type": "ccfb", "text": "CACM" }
+        { "type": "year", "text": "2025" },
+        { "type": "unpublished", "text": "arXiv" }
+      ]
+    },
+    {
+      "title": "FDI: Attack Neural Code Generation Systems through User Feedback Channel",
+      "url": "https://arxiv.org/pdf/2408.04194",
+      "authors": "Zhensu Sun, Xiaoning Du, Xiapu Luo, Fu Song, David Lo, Li Li",
+      "year": "2024",
+      "venue": "ISSTA",
+      "isFirstAuthored": true,
+      "tags": [
+        { "type": "year", "text": "2024" },
+        { "type": "ccfa", "text": "ISSTA" }
       ]
     },
     {
@@ -157,18 +181,6 @@
       ]
     },
     {
-      "title": "FDI: Attack Neural Code Generation Systems through User Feedback Channel",
-      "url": "https://arxiv.org/pdf/2408.04194",
-      "authors": "Zhensu Sun, Xiaoning Du, Xiapu Luo, Fu Song, David Lo, Li Li",
-      "year": "2024",
-      "venue": "ISSTA",
-      "isFirstAuthored": true,
-      "tags": [
-        { "type": "year", "text": "2024" },
-        { "type": "ccfa", "text": "ISSTA" }
-      ]
-    },
-    {
       "title": "When Neural Code Completion Models Size up the Situation: Attaining Cheaper and Faster Completion through Dynamic Model Inference",
       "url": "https://arxiv.org/pdf/2401.09964.pdf",
       "authors": "Zhensu Sun, Xiaoning Du, Fu Song, Shangwen Wang, Li Li",
@@ -182,15 +194,15 @@
       ]
     },
     {
-      "title": "Fusing Code Searchers",
-      "url": "https://www.researchgate.net/profile/Shangwen-Wang/publication/377187000_Fusing_Code_Searchers/links/6598e24a6f6e450f19ce5987/Fusing-Code-Searchers.pdf",
-      "authors": "Shangwen Wang, Mingyang Geng, Bo Lin, Zhensu Sun, Ming Wen, Yepang Liu, Li Li, Tegawendé F Bissyandé, Xiaoguang Mao",
+      "title": "Fraud's Bargain Attack: Generating Adversarial Text Samples via Word Manipulation Process",
+      "url": "https://arxiv.org/pdf/2303.01234.pdf",
+      "authors": "Mingze Ni, Zhensu Sun, Wei Liu",
       "year": "2024",
-      "venue": "TSE",
+      "venue": "TKDE",
       "isFirstAuthored": false,
       "tags": [
         { "type": "year", "text": "2024" },
-        { "type": "ccfa", "text": "TSE" }
+        { "type": "ccfa", "text": "TKDE" }
       ]
     },
     {
@@ -210,6 +222,18 @@
       ]
     },
     {
+      "title": "Fusing Code Searchers",
+      "url": "https://www.researchgate.net/profile/Shangwen-Wang/publication/377187000_Fusing_Code_Searchers/links/6598e24a6f6e450f19ce5987/Fusing-Code-Searchers.pdf",
+      "authors": "Shangwen Wang, Mingyang Geng, Bo Lin, Zhensu Sun, Ming Wen, Yepang Liu, Li Li, Tegawendé F Bissyandé, Xiaoguang Mao",
+      "year": "2024",
+      "venue": "TSE",
+      "isFirstAuthored": false,
+      "tags": [
+        { "type": "year", "text": "2024" },
+        { "type": "ccfa", "text": "TSE" }
+      ]
+    },
+    {
       "title": "Reversible jump attack to textual classifiers with modification reduction",
       "url": "https://link.springer.com/article/10.1007/s10994-024-06539-6",
       "authors": "Mingze Ni, Zhensu Sun, Wei Liu",
@@ -219,18 +243,6 @@
       "tags": [
         { "type": "year", "text": "2024" },
         { "type": "ccfb", "text": "Machine Learning" }
-      ]
-    },
-    {
-      "title": "Fraud's Bargain Attack: Generating Adversarial Text Samples via Word Manipulation Process",
-      "url": "https://arxiv.org/pdf/2303.01234.pdf",
-      "authors": "Mingze Ni, Zhensu Sun, Wei Liu",
-      "year": "2024",
-      "venue": "TKDE",
-      "isFirstAuthored": false,
-      "tags": [
-        { "type": "year", "text": "2024" },
-        { "type": "ccfa", "text": "TKDE" }
       ]
     },
     {
@@ -271,18 +283,6 @@
       ]
     },
     {
-      "title": "CoProtector: Protect Open-Source Code against Unauthorized Training Usage with Data Poisoning",
-      "url": "https://arxiv.org/pdf/2110.12925.pdf",
-      "authors": "Zhensu Sun, Xiaoning Du, Fu Song, Mingze Ni, Li Li",
-      "year": "2022",
-      "venue": "WWW",
-      "isFirstAuthored": true,
-      "tags": [
-        { "type": "year", "text": "2022" },
-        { "type": "ccfa", "text": "WWW" }
-      ]
-    },
-    {
       "title": "On the Importance of Building High-quality Training Datasets for Neural Code Search",
       "url": "https://arxiv.org/pdf/2202.06649.pdf",
       "authors": "Zhensu Sun, Li Li, Yan Liu, Xiaoning Du, Li Li",
@@ -293,6 +293,18 @@
         { "type": "year", "text": "2022" },
         { "type": "ccfa", "text": "ICSE" },
         { "type": "award", "text": "Nominated for Distinguished Paper" }
+      ]
+    },
+    {
+      "title": "CoProtector: Protect Open-Source Code against Unauthorized Training Usage with Data Poisoning",
+      "url": "https://arxiv.org/pdf/2110.12925.pdf",
+      "authors": "Zhensu Sun, Xiaoning Du, Fu Song, Mingze Ni, Li Li",
+      "year": "2022",
+      "venue": "WWW",
+      "isFirstAuthored": true,
+      "tags": [
+        { "type": "year", "text": "2022" },
+        { "type": "ccfa", "text": "WWW" }
       ]
     },
     {
