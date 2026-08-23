@@ -254,19 +254,6 @@
     }
     .callout .btn:hover { background: var(--accent-strong); text-decoration: none; color: var(--surface); }
 
-    /* ---------- Highlights ---------- */
-    .facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-    .fact {
-      font-family: var(--mono);
-      font-size: 12.5px;
-      color: var(--muted);
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: 4px 10px;
-    }
-    .fact em { font-style: normal; color: var(--gold); font-weight: 500; }
-
     /* ---------- Awards ---------- */
     .award-list { margin: 0; padding: 0; list-style: none; max-width: 72ch; }
     .award-list li {
@@ -541,11 +528,6 @@
                     <p class="callout-kicker">Recruiting &middot; Jan 2027</p>
                     <p>I will join the <b>Data Science and Analytics (DSA) Thrust</b> at <a href="https://www.hkust-gz.edu.cn/">The Hong Kong University of Science and Technology (Guangzhou)</a> as an Assistant Professor in January 2027. I am recruiting <b>self-motivated PhD/MPhil students and Research Assistants (RAs)</b> to join my group.</p>
                     <a class="btn" href="mailto:zhensuuu@gmail.com?subject=Prospective%20student%2FRA">Email me with your CV</a>
-                </div>
-                <div class="facts">
-                    <span class="fact"><em>3&times;</em> ACM SIGSOFT Distinguished Paper Award</span>
-                    <span class="fact" id="fact-pub-count">27 publications</span>
-                    <span class="fact">ICSE &middot; ISSTA &middot; FSE &middot; ICML</span>
                 </div>
             </section>
 
@@ -830,9 +812,6 @@
     var venueSelect = document.getElementById('filter-venue');
     var countEl = document.getElementById('pub-count');
     var emptyEl = document.getElementById('pub-empty');
-    var factCount = document.getElementById('fact-pub-count');
-
-    if (factCount) factCount.textContent = pubs.length + ' publications';
 
     function matches(pub) {
         var role = parseInt(pub.dataset.myRole, 10);
