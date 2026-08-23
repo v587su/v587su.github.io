@@ -276,8 +276,6 @@
     .service-list .detail { color: var(--muted); }
 
     /* ---------- Publications ---------- */
-    .pub-note { font-size: 13.5px; color: var(--muted); margin: -8px 0 14px; }
-    .pub-note .me-sample { font-weight: 600; color: var(--ink); }
 
     .pub-toolbar {
       position: sticky;
@@ -382,7 +380,29 @@
     .pub-title a:hover { color: var(--accent); text-decoration: none; }
     .pub-authors { font-size: 13.5px; color: var(--muted); margin: 0; line-height: 1.6; }
     .pub-authors .me { font-weight: 600; color: var(--ink); }
-    .pub-authors sup { font-size: 10px; line-height: 0; }
+    .pub-authors sup { font-size: 10px; line-height: 0; position: relative; cursor: help; }
+    .pub-authors sup::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: calc(100% + 5px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--ink);
+      color: var(--bg);
+      font-family: var(--sans);
+      font-size: 11.5px;
+      font-weight: 500;
+      line-height: 1.4;
+      padding: 3px 8px;
+      border-radius: 5px;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.12s ease;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .pub-authors sup:hover::after, .pub-authors sup:focus::after { opacity: 1; visibility: visible; }
     .pub-empty {
       display: none;
       padding: 32px 0;
@@ -558,7 +578,6 @@
 
             <section class="section" id="publications">
                 <h2 class="section-title">Publications</h2>
-                <p class="pub-note"><span class="me-sample">Bold</span> = me &middot; <sup>👥</sup> equal contribution &middot; <sup>📧</sup> corresponding author</p>
 
                 <div class="pub-toolbar" id="pub-toolbar">
                     <div class="seg" role="group" aria-label="Filter by my role">
@@ -579,6 +598,7 @@
                         <option value="all">All venues</option>
                         <option value="ASE">ASE</option>
                         <option value="CACM">CACM</option>
+                        <option value="EMNLP">EMNLP</option>
                         <option value="ESEC/FSE">ESEC/FSE</option>
                         <option value="ICML">ICML</option>
                         <option value="ICSE">ICSE</option>
@@ -610,7 +630,7 @@
                         <article class="pub" data-year="2026" data-venue="arXiv" data-my-role="2" data-unpublished="true">
                             <div class="pub-chips"><span class="chip chip-pre">arXiv</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/abs/2607.01211">Are Performance-Optimization Benchmarks Reliably Measuring Coding Agents?</a></div>
-                            <p class="pub-authors">Zhi Chen, <span class="me">Zhensu Sun</span><sup title="Corresponding author">📧</sup>, Yuling Shi, David Lo, Lingxiao Jiang</p>
+                            <p class="pub-authors">Zhi Chen, <span class="me">Zhensu Sun</span><sup tabindex="0" data-tip="Corresponding author">📧</sup>, Yuling Shi, David Lo, Lingxiao Jiang</p>
                         </article>
 
                         <article class="pub" data-year="2026" data-venue="ISSTA" data-my-role="3" data-unpublished="false">
@@ -622,13 +642,13 @@
                         <article class="pub" data-year="2026" data-venue="arXiv" data-my-role="0" data-unpublished="true">
                             <div class="pub-chips"><span class="chip chip-pre">arXiv</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/pdf/2604.00491">Executing as You Generate: Hiding Execution Latency in LLM Code Interpreters</a></div>
-                            <p class="pub-authors"><span class="me">Zhensu Sun</span><sup title="Equal contribution">👥</sup>, Zhihao Lin<sup title="Equal contribution">👥</sup>, Zhi Chen, Chengran Yang, Mingyi Zhou, Li Li, David Lo</p>
+                            <p class="pub-authors"><span class="me">Zhensu Sun</span><sup tabindex="0" data-tip="Equal contribution">👥</sup>, Zhihao Lin<sup tabindex="0" data-tip="Equal contribution">👥</sup>, Zhi Chen, Chengran Yang, Mingyi Zhou, Li Li, David Lo</p>
                         </article>
 
                         <article class="pub" data-year="2026" data-venue="arXiv" data-my-role="2" data-unpublished="true">
                             <div class="pub-chips"><span class="chip chip-pre">arXiv</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/pdf/2602.07900">Rethinking the Value of Agent-Generated Tests for LLM-Based Software Engineering Agents</a></div>
-                            <p class="pub-authors">Zhi Chen, <span class="me">Zhensu Sun</span><sup title="Corresponding author">📧</sup>, Yuling Shi, Chao Peng, Xiaodong Gu, David Lo, Lingxiao Jiang</p>
+                            <p class="pub-authors">Zhi Chen, <span class="me">Zhensu Sun</span><sup tabindex="0" data-tip="Corresponding author">📧</sup>, Yuling Shi, Chao Peng, Xiaodong Gu, David Lo, Lingxiao Jiang</p>
                         </article>
 
                         <article class="pub" data-year="2026" data-venue="ISSTA" data-my-role="3" data-unpublished="false">
@@ -649,16 +669,22 @@
                             <p class="pub-authors">Gou Tan, Zilong He, Min Li, Pengfei Chen, Jieke Shi, <span class="me">Zhensu Sun</span>, Ting Zhang, Danwen Chen, Lwin Khin Shar, Chuanfu Zhang, David Lo</p>
                         </article>
 
+                        <article class="pub" data-year="2026" data-venue="EMNLP" data-my-role="0" data-unpublished="false">
+                            <div class="pub-chips"><span class="chip chip-b">EMNLP 2026</span><span class="chip chip-track">Findings</span></div>
+                            <div class="pub-title"><a href="https://www.arxiv.org/pdf/2509.24637">Bridging Developer Instructions and Code Completion Through Instruction-Aware Fill-in-the-Middle Paradigm</a></div>
+                            <p class="pub-authors"><span class="me">Zhensu Sun</span>, Chengran Yang, Chao Peng, Pengfei Gao, Xiaoning Du, Li Li, David Lo</p>
+                        </article>
+
                         <article class="pub" data-year="2026" data-venue="ICSE" data-my-role="1" data-unpublished="false">
                             <div class="pub-chips"><span class="chip chip-a">ICSE 2026</span><span class="chip chip-award">🏆 Distinguished Paper</span></div>
                             <div class="pub-title"><a href="https://www.arxiv.org/pdf/2508.13666">The Hidden Cost of Readability: How Code Formatting Silently Consumes Your LLM Budget</a></div>
-                            <p class="pub-authors">Dangfeng Pan<sup title="Equal contribution">👥</sup>, <span class="me">Zhensu Sun</span><sup title="Equal contribution">👥</sup>, Cenyuan Zhang, David Lo, Xiaoning Du</p>
+                            <p class="pub-authors">Dangfeng Pan<sup tabindex="0" data-tip="Equal contribution">👥</sup>, <span class="me">Zhensu Sun</span><sup tabindex="0" data-tip="Equal contribution">👥</sup>, Cenyuan Zhang, David Lo, Xiaoning Du</p>
                         </article>
 
                         <article class="pub" data-year="2026" data-venue="ICSE" data-my-role="2" data-unpublished="false">
                             <div class="pub-chips"><span class="chip chip-a">ICSE 2026</span><span class="chip chip-award">🏆 Distinguished Paper</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/pdf/2503.14838">Think Like Human Developers: Harnessing Community Knowledge for Structured Code Reasoning</a></div>
-                            <p class="pub-authors">Chengran Yang, <span class="me">Zhensu Sun</span><sup title="Corresponding author">📧</sup>, Hong Jin Kang, Jieke Shi, David Lo</p>
+                            <p class="pub-authors">Chengran Yang, <span class="me">Zhensu Sun</span><sup tabindex="0" data-tip="Corresponding author">📧</sup>, Hong Jin Kang, Jieke Shi, David Lo</p>
                         </article>
 
                         <article class="pub" data-year="2026" data-venue="CACM" data-my-role="0" data-unpublished="false">
@@ -683,11 +709,6 @@
                             <p class="pub-authors"><span class="me">Zhensu Sun</span>, Chengran Yang, Xiaoning Du, Zhou Yang, Li Li, David Lo</p>
                         </article>
 
-                        <article class="pub" data-year="2025" data-venue="arXiv" data-my-role="0" data-unpublished="true">
-                            <div class="pub-chips"><span class="chip chip-pre">arXiv</span></div>
-                            <div class="pub-title"><a href="https://www.arxiv.org/pdf/2509.24637">Bridging Developer Instructions and Code Completion Through Instruction-Aware Fill-in-the-Middle Paradigm</a></div>
-                            <p class="pub-authors"><span class="me">Zhensu Sun</span>, Chengran Yang, Chao Peng, Pengfei Gao, Xiaoning Du, Li Li, David Lo</p>
-                        </article>
                     </div>
 
                     <div class="year-group" data-year-group="2024">
@@ -708,7 +729,7 @@
                         <article class="pub" data-year="2024" data-venue="ICSE" data-my-role="0" data-unpublished="false">
                             <div class="pub-chips"><span class="chip chip-a">ICSE 2024</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/pdf/2401.09964.pdf">When Neural Code Completion Models Size up the Situation: Attaining Cheaper and Faster Completion through Dynamic Model Inference</a></div>
-                            <p class="pub-authors"><span class="me">Zhensu Sun</span><sup title="Equal contribution">👥</sup>, Xiaoning Du<sup title="Equal contribution">👥</sup>, Fu Song, Shangwen Wang, Li Li</p>
+                            <p class="pub-authors"><span class="me">Zhensu Sun</span><sup tabindex="0" data-tip="Equal contribution">👥</sup>, Xiaoning Du<sup tabindex="0" data-tip="Equal contribution">👥</sup>, Fu Song, Shangwen Wang, Li Li</p>
                         </article>
 
                         <article class="pub" data-year="2024" data-venue="TKDE" data-my-role="3" data-unpublished="false">
@@ -742,7 +763,7 @@
                         <article class="pub" data-year="2023" data-venue="ESEC/FSE" data-my-role="0" data-unpublished="false">
                             <div class="pub-chips"><span class="chip chip-a">ESEC/FSE 2023</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/pdf/2308.14401.pdf">CodeMark: Imperceptible Watermarking for Code Datasets against Neural Code Completion Models</a></div>
-                            <p class="pub-authors"><span class="me">Zhensu Sun</span><sup title="Equal contribution">👥</sup>, Xiaoning Du<sup title="Equal contribution">👥</sup>, Fu Song, Li Li</p>
+                            <p class="pub-authors"><span class="me">Zhensu Sun</span><sup tabindex="0" data-tip="Equal contribution">👥</sup>, Xiaoning Du<sup tabindex="0" data-tip="Equal contribution">👥</sup>, Fu Song, Li Li</p>
                         </article>
 
                         <article class="pub" data-year="2023" data-venue="ESEC/FSE" data-my-role="3" data-unpublished="false">
