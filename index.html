@@ -23,66 +23,66 @@
 <style>
     /* ---------- Design tokens ---------- */
     :root {
-      --bg: #F5F7FA;
+      --bg: #FAFAF7;
       --surface: #FFFFFF;
-      --surface-2: #EDF1F6;
-      --ink: #17202B;
-      --muted: #5B6674;
-      --line: #DFE5EC;
-      --accent: #1554C0;
-      --accent-strong: #113E8C;
-      --accent-soft: #E9F0FB;
-      --gold: #8A6400;
-      --chip-a-fg: #AC3E1B;  --chip-a-bg: #FAEAE3;
-      --chip-b-fg: #6C3FA4;  --chip-b-bg: #F2ECFA;
-      --chip-pre-fg: #35723F; --chip-pre-bg: #E8F3EA;
-      --chip-track-fg: #5B6674; --chip-track-bg: #EEF1F5;
-      --chip-award-fg: #8A6400; --chip-award-bg: #FCF3D7;
-      --topbar-bg: rgba(255, 255, 255, 0.85);
-      --shadow: 0 1px 2px rgba(23, 32, 43, 0.05), 0 8px 24px rgba(23, 32, 43, 0.06);
+      --surface-2: #F0F0EB;
+      --ink: #141414;
+      --muted: #66665F;
+      --line: #E0E0DA;
+      --accent: #C2402A;
+      --accent-strong: #962F1E;
+      --accent-soft: #F8E8E4;
+      --gold: #7D6A2A;
+      --chip-a-fg: #8E2E1E;  --chip-a-bg: #F6E3DE;
+      --chip-b-fg: #2E4A7A;  --chip-b-bg: #E3EAF4;
+      --chip-pre-fg: #3E6B45; --chip-pre-bg: #E3EEE4;
+      --chip-track-fg: #66665F; --chip-track-bg: #EDEDE8;
+      --chip-award-fg: #7D5A0E; --chip-award-bg: #F5EBCF;
+      --topbar-bg: rgba(250, 250, 247, 0.85);
+      --shadow: 0 1px 2px rgba(20, 20, 20, 0.05), 0 8px 24px rgba(20, 20, 20, 0.06);
       --serif: "Newsreader", Georgia, "Times New Roman", serif;
       --sans: "IBM Plex Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
       --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Consolas, monospace;
     }
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
-        --bg: #0E141D;
-        --surface: #151D29;
-        --surface-2: #1C2634;
-        --ink: #E7ECF3;
-        --muted: #94A0B0;
-        --line: #263140;
-        --accent: #7FB0F5;
-        --accent-strong: #A8C8F8;
-        --accent-soft: #1A2A44;
-        --gold: #E8C35C;
-        --chip-a-fg: #F0906C;  --chip-a-bg: #3A2019;
-        --chip-b-fg: #C79BEA;  --chip-b-bg: #2E2140;
-        --chip-pre-fg: #86C793; --chip-pre-bg: #1C2F20;
-        --chip-track-fg: #9AA5B4; --chip-track-bg: #232D3B;
-        --chip-award-fg: #E8C35C; --chip-award-bg: #35290D;
-        --topbar-bg: rgba(14, 20, 29, 0.85);
-        --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+        --bg: #111110;
+        --surface: #181817;
+        --surface-2: #212120;
+        --ink: #ECECE8;
+        --muted: #9B9B95;
+        --line: #2C2C2A;
+        --accent: #E8705A;
+        --accent-strong: #F09A88;
+        --accent-soft: #3A1F1A;
+        --gold: #D8C070;
+        --chip-a-fg: #E89A86;  --chip-a-bg: #3A1F1A;
+        --chip-b-fg: #9FB8E0;  --chip-b-bg: #1E2A3E;
+        --chip-pre-fg: #93C7A0; --chip-pre-bg: #1C2F21;
+        --chip-track-fg: #9B9B95; --chip-track-bg: #262625;
+        --chip-award-fg: #E3C070; --chip-award-bg: #35290F;
+        --topbar-bg: rgba(17, 17, 16, 0.85);
+        --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
       }
     }
     :root[data-theme="dark"] {
-      --bg: #0E141D;
-      --surface: #151D29;
-      --surface-2: #1C2634;
-      --ink: #E7ECF3;
-      --muted: #94A0B0;
-      --line: #263140;
-      --accent: #7FB0F5;
-      --accent-strong: #A8C8F8;
-      --accent-soft: #1A2A44;
-      --gold: #E8C35C;
-      --chip-a-fg: #F0906C;  --chip-a-bg: #3A2019;
-      --chip-b-fg: #C79BEA;  --chip-b-bg: #2E2140;
-      --chip-pre-fg: #86C793; --chip-pre-bg: #1C2F20;
-      --chip-track-fg: #9AA5B4; --chip-track-bg: #232D3B;
-      --chip-award-fg: #E8C35C; --chip-award-bg: #35290D;
-      --topbar-bg: rgba(14, 20, 29, 0.85);
-      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+      --bg: #111110;
+      --surface: #181817;
+      --surface-2: #212120;
+      --ink: #ECECE8;
+      --muted: #9B9B95;
+      --line: #2C2C2A;
+      --accent: #E8705A;
+      --accent-strong: #F09A88;
+      --accent-soft: #3A1F1A;
+      --gold: #D8C070;
+      --chip-a-fg: #E89A86;  --chip-a-bg: #3A1F1A;
+      --chip-b-fg: #9FB8E0;  --chip-b-bg: #1E2A3E;
+      --chip-pre-fg: #93C7A0; --chip-pre-bg: #1C2F21;
+      --chip-track-fg: #9B9B95; --chip-track-bg: #262625;
+      --chip-award-fg: #E3C070; --chip-award-bg: #35290F;
+      --topbar-bg: rgba(17, 17, 16, 0.85);
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
     }
 
     /* ---------- Base ---------- */
