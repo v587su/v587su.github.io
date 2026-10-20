@@ -346,12 +346,29 @@
     .year-head .n { font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
 
     .pub {
+      display: grid;
+      grid-template-columns: 58px minmax(0, 1fr);
+      column-gap: 16px;
       padding: 14px 14px 15px;
       margin: 0 -14px;
       border-radius: 10px;
       transition: background 0.15s ease;
     }
     .pub:hover { background: var(--surface); box-shadow: var(--shadow); }
+    .pub > * { grid-column: 2; }
+    .pub-date {
+      grid-column: 1;
+      grid-row: 1 / span 3;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      line-height: 1.5;
+      letter-spacing: 0.02em;
+      color: var(--muted);
+      padding: 3px 8px 0 0;
+      margin-right: -8px;
+      border-right: 1px solid var(--line);
+    }
+    .pub-date b { display: block; font-weight: 500; color: var(--ink); }
     .pub-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
     .chip {
       font-family: var(--mono);
@@ -455,7 +472,8 @@
       .side-contact { grid-column: 1 / -1; margin-top: 6px; }
       .side-links { grid-column: 1 / -1; margin-top: 4px; }
       .section { margin-bottom: 44px; }
-      .pub { margin: 0 -8px; padding: 12px 8px 13px; }
+      .pub { margin: 0 -8px; padding: 12px 8px 13px; grid-template-columns: 50px minmax(0, 1fr); column-gap: 12px; }
+      .pub-date { font-size: 11px; padding-right: 6px; margin-right: -6px; }
       .pub-title { font-size: 17px; }
       .pub-count { margin-left: 0; width: 100%; order: 9; }
       .pub-toolbar { top: 51px; }
@@ -555,12 +573,6 @@
                     </div>
                     <select id="filter-year" aria-label="Filter by year">
                         <option value="all">All years</option>
-                        <option value="2026">2026</option>
-                        <option value="2025">2025</option>
-                        <option value="2024">2024</option>
-                        <option value="2023">2023</option>
-                        <option value="2022">2022</option>
-                        <option value="2020">2020</option>
                     </select>
                     <select id="filter-venue" aria-label="Filter by venue">
                         <option value="all">All venues</option>
@@ -585,229 +597,208 @@
                 </div>
 
                 <div id="publications-list">
+                    <!-- One <article> per paper, newest first. data-date = the month the paper first became public
+                         (arXiv v1, or the venue publication date if there is no preprint). The date label on the left,
+                         the year groups and the year dropdown are all generated from data-date by the script at the
+                         bottom of the page. -->
 
-                    <div class="year-group" data-year-group="2026">
-                        <div class="year-head"><span class="y">2026</span><span class="rule"></span><span class="n"></span></div>
-
-                        <article class="pub" data-year="2026" data-venue="EMNLP" data-my-role="2" data-unpublished="false">
+                    <article class="pub" data-year="2026" data-date="2026-09" data-venue="EMNLP" data-my-role="2" data-unpublished="false">
                             <div class="pub-chips"><span class="chip chip-b">EMNLP 2026</span><span class="chip chip-track">Findings</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/abs/2609.09242">Talking to Itself While Coding: What Makes Comments Help Code Generation?</a></div>
                             <p class="pub-authors">Dangfeng Pan, <span class="me">Zhensu Sun</span><sup tabindex="0" data-tip="Corresponding author">📧</sup>, Cenyuan Zhang, David Lo, Xiaoning Du</p>
                         </article>
 
-                        <article class="pub" data-year="2026" data-venue="arXiv" data-my-role="1" data-unpublished="true">
+                    <article class="pub" data-year="2026" data-date="2026-09" data-venue="arXiv" data-my-role="1" data-unpublished="true">
                             <div class="pub-chips"><span class="chip chip-pre">arXiv</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/abs/2609.02783">EarlyEval: Cheaper Agent Evaluation via Early Outcome Prediction</a></div>
                             <p class="pub-authors">Yuling Shi<sup tabindex="0" data-tip="Equal contribution">👥</sup>, <span class="me">Zhensu Sun</span><sup tabindex="0" data-tip="Equal contribution">👥</sup>, Junsen Dong, Chengcheng Wan, David Lo, Xiaodong Gu</p>
                         </article>
 
-                        <article class="pub" data-year="2026" data-venue="arXiv" data-my-role="0" data-unpublished="true">
+                    <article class="pub" data-year="2026" data-date="2026-08" data-venue="arXiv" data-my-role="0" data-unpublished="true">
                             <div class="pub-chips"><span class="chip chip-pre">arXiv</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/abs/2608.13667">Second Thought: Reasoning in Parallel as LLM Agents Act and Observe</a></div>
                             <p class="pub-authors"><span class="me">Zhensu Sun</span>, Chengran Yang, Yunbo Lyu, Jieke Shi, David Lo</p>
                         </article>
 
-                        <article class="pub" data-year="2026" data-venue="ASE" data-my-role="3" data-unpublished="false">
+                    <article class="pub" data-year="2026" data-date="2026-08" data-venue="ASE" data-my-role="3" data-unpublished="false">
                             <div class="pub-chips"><span class="chip chip-a">ASE 2026</span></div>
                             <div class="pub-title"><a href="https://doi.org/10.1145/3832783.3837437">AgentChaos: Chaos Engineering for Agent Systems via Programmatic Fault Injection</a></div>
                             <p class="pub-authors">Gou Tan, <span class="me">Zhensu Sun</span>, Jieke Shi, Ting Zhang, Zilong He, Qingfu Wu, Shuai Liang, Weifeng Sun, Junda He, Pengfei Chen, Chuanfu Zhang, Lwin Khin Shar, David Lo</p>
                         </article>
 
-                        <article class="pub" data-year="2026" data-venue="arXiv" data-my-role="3" data-unpublished="true">
+                    <article class="pub" data-year="2026" data-date="2026-08" data-venue="arXiv" data-my-role="3" data-unpublished="true">
                             <div class="pub-chips"><span class="chip chip-pre">arXiv</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/abs/2608.02162">Lossless Tensor Compression as Program Synthesis</a></div>
                             <p class="pub-authors">Jieke Shi, Junda He, Wenjia Jiang, Weifeng Sun, Shidong Pan, <span class="me">Zhensu Sun</span>, Chengran Yang, Peixin Zhang, Yifan Jia, Zhou Yang, Thong Hoang, Xiwei Xu, Zhenchang Xing, David Lo</p>
                         </article>
 
-                        <article class="pub" data-year="2026" data-venue="arXiv" data-my-role="2" data-unpublished="true">
+                    <article class="pub" data-year="2026" data-date="2026-07" data-venue="arXiv" data-my-role="2" data-unpublished="true">
                             <div class="pub-chips"><span class="chip chip-pre">arXiv</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/abs/2607.10856">How Do Practitioners Build SE Agents? Insights from a Mixed-Methods Study</a></div>
                             <p class="pub-authors">Yunbo Lyu, David Williams, Jieke Shi, <span class="me">Zhensu Sun</span><sup tabindex="0" data-tip="Corresponding author">📧</sup>, Chao Peng, Zhou Yang, Federica Sarro, David Lo</p>
                         </article>
 
-                        <article class="pub" data-year="2026" data-venue="arXiv" data-my-role="3" data-unpublished="true">
+                    <article class="pub" data-year="2026" data-date="2026-07" data-venue="arXiv" data-my-role="3" data-unpublished="true">
                             <div class="pub-chips"><span class="chip chip-pre">arXiv</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/abs/2607.01213">RepoRescue: An Empirical Study of LLM Agents on Whole-Repository Compatibility Rescue</a></div>
                             <p class="pub-authors">Zhihao Lin, Mingyi Zhou, <span class="me">Zhensu Sun</span>, Yizhuo Yang, Renyu Yang, David Lo, Li Li</p>
                         </article>
 
-                        <article class="pub" data-year="2026" data-venue="arXiv" data-my-role="2" data-unpublished="true">
+                    <article class="pub" data-year="2026" data-date="2026-07" data-venue="arXiv" data-my-role="2" data-unpublished="true">
                             <div class="pub-chips"><span class="chip chip-pre">arXiv</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/abs/2607.01211">Are Performance-Optimization Benchmarks Reliably Measuring Coding Agents?</a></div>
                             <p class="pub-authors">Zhi Chen, <span class="me">Zhensu Sun</span><sup tabindex="0" data-tip="Corresponding author">📧</sup>, Yuling Shi, David Lo, Lingxiao Jiang</p>
                         </article>
 
-                        <article class="pub" data-year="2026" data-venue="ISSTA" data-my-role="3" data-unpublished="false">
+                    <article class="pub" data-year="2026" data-date="2026-06" data-venue="ISSTA" data-my-role="3" data-unpublished="false">
                             <div class="pub-chips"><span class="chip chip-a">ISSTA 2026</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/pdf/2606.26978">To Run or Not to Run: Analyzing the Cost-Effectiveness of Code Execution in LLM-Based Program Repair</a></div>
                             <p class="pub-authors">Zhihao Lin, Junhua Zhu, Mingyi Zhou, Xin Wang, <span class="me">Zhensu Sun</span>, Renyu Yang, David Lo, Li Li</p>
                         </article>
 
-                        <article class="pub" data-year="2026" data-venue="arXiv" data-my-role="0" data-unpublished="true">
+                    <article class="pub" data-year="2026" data-date="2026-04" data-venue="ICSE" data-my-role="0" data-unpublished="false">
+                            <div class="pub-chips"><span class="chip chip-a">ICSE 2026</span><span class="chip chip-track">Student Research Competition</span></div>
+                            <div class="pub-title"><a href="./papers/FastMCC.pdf">FastMCC: Multiple-hypotheses Code Completion with Natural Language Phrases as Alternative Suggestions</a></div>
+                            <p class="pub-authors"><span class="me">Zhensu Sun</span></p>
+                        </article>
+
+                    <article class="pub" data-year="2026" data-date="2026-04" data-venue="arXiv" data-my-role="0" data-unpublished="true">
                             <div class="pub-chips"><span class="chip chip-pre">arXiv</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/pdf/2604.00491">Executing as You Generate: Hiding Execution Latency in LLM Code Interpreters</a></div>
                             <p class="pub-authors"><span class="me">Zhensu Sun</span><sup tabindex="0" data-tip="Equal contribution">👥</sup>, Zhihao Lin<sup tabindex="0" data-tip="Equal contribution">👥</sup>, Zhi Chen, Chengran Yang, Mingyi Zhou, Li Li, David Lo</p>
                         </article>
 
-                        <article class="pub" data-year="2026" data-venue="arXiv" data-my-role="2" data-unpublished="true">
+                    <article class="pub" data-year="2026" data-date="2026-02" data-venue="arXiv" data-my-role="2" data-unpublished="true">
                             <div class="pub-chips"><span class="chip chip-pre">arXiv</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/pdf/2602.07900">Rethinking the Value of Agent-Generated Tests for LLM-Based Software Engineering Agents</a></div>
                             <p class="pub-authors">Zhi Chen, <span class="me">Zhensu Sun</span><sup tabindex="0" data-tip="Corresponding author">📧</sup>, Yuling Shi, Chao Peng, Xiaodong Gu, David Lo, Lingxiao Jiang</p>
                         </article>
 
-                        <article class="pub" data-year="2026" data-venue="ISSTA" data-my-role="3" data-unpublished="false">
+                    <article class="pub" data-year="2026" data-date="2026-02" data-venue="ISSTA" data-my-role="3" data-unpublished="false">
                             <div class="pub-chips"><span class="chip chip-a">ISSTA 2026</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/pdf/2602.01785">CodeOCR: On the Effectiveness of Vision Language Models in Code Understanding</a></div>
                             <p class="pub-authors">Yuling Shi, Chaoxiang Xie, <span class="me">Zhensu Sun</span>, Yeheng Chen, Chenxu Zhang, Longfei Yun, Chengcheng Wan, Hongyu Zhang, David Lo, Xiaodong Gu</p>
                         </article>
 
-                        <article class="pub" data-year="2026" data-venue="ICML" data-my-role="3" data-unpublished="false">
+                    <article class="pub" data-year="2026" data-date="2026-02" data-venue="ICML" data-my-role="3" data-unpublished="false">
                             <div class="pub-chips"><span class="chip chip-a">ICML 2026</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/pdf/2602.01187">Autoregressive, Yet Revisable: In Decoding Revision for Secure Code Generation</a></div>
                             <p class="pub-authors">Chengran Yang, Zichao Wei, Heminghao Deng, Jinfeng Jiang, <span class="me">Zhensu Sun</span>, Ting Zhang, Tianyi Wu, Ming Wen, David Lo</p>
                         </article>
 
-                        <article class="pub" data-year="2026" data-venue="arXiv" data-my-role="3" data-unpublished="true">
+                    <article class="pub" data-year="2026" data-date="2026-01" data-venue="arXiv" data-my-role="3" data-unpublished="true">
                             <div class="pub-chips"><span class="chip chip-pre">arXiv</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/pdf/2601.05539">LIDL: LLM Integration Defect Localization via Knowledge Graph-Enhanced Multi-Agent Analysis</a></div>
                             <p class="pub-authors">Gou Tan, Zilong He, Min Li, Pengfei Chen, Jieke Shi, <span class="me">Zhensu Sun</span>, Ting Zhang, Danwen Chen, Lwin Khin Shar, Chuanfu Zhang, David Lo</p>
                         </article>
 
-                        <article class="pub" data-year="2026" data-venue="EMNLP" data-my-role="0" data-unpublished="false">
-                            <div class="pub-chips"><span class="chip chip-b">EMNLP 2026</span><span class="chip chip-track">Findings</span></div>
-                            <div class="pub-title"><a href="https://www.arxiv.org/pdf/2509.24637">Extending Fill-In-the-Middle with Instructions for Steerable Code Completion</a></div>
-                            <p class="pub-authors"><span class="me">Zhensu Sun</span>, Chengran Yang, Chao Peng, Pengfei Gao, Xiaoning Du, Li Li, David Lo</p>
-                        </article>
-
-                        <article class="pub" data-year="2026" data-venue="ICSE" data-my-role="1" data-unpublished="false">
-                            <div class="pub-chips"><span class="chip chip-a">ICSE 2026</span><span class="chip chip-award">🏆 Distinguished Paper</span></div>
-                            <div class="pub-title"><a href="https://www.arxiv.org/pdf/2508.13666">The Hidden Cost of Readability: How Code Formatting Silently Consumes Your LLM Budget</a></div>
-                            <p class="pub-authors">Dangfeng Pan<sup tabindex="0" data-tip="Equal contribution">👥</sup>, <span class="me">Zhensu Sun</span><sup tabindex="0" data-tip="Equal contribution">👥</sup>, Cenyuan Zhang, David Lo, Xiaoning Du</p>
-                        </article>
-
-                        <article class="pub" data-year="2026" data-venue="ICSE" data-my-role="2" data-unpublished="false">
-                            <div class="pub-chips"><span class="chip chip-a">ICSE 2026</span><span class="chip chip-award">🏆 Distinguished Paper</span></div>
-                            <div class="pub-title"><a href="https://arxiv.org/pdf/2503.14838">Think Like Human Developers: Harnessing Community Knowledge for Structured Code Reasoning</a></div>
-                            <p class="pub-authors">Chengran Yang, <span class="me">Zhensu Sun</span><sup tabindex="0" data-tip="Corresponding author">📧</sup>, Hong Jin Kang, Jieke Shi, David Lo</p>
-                        </article>
-
-                        <article class="pub" data-year="2026" data-venue="CACM" data-my-role="0" data-unpublished="false">
-                            <div class="pub-chips"><span class="chip chip-b">CACM</span><span class="chip chip-award">🏆 Cover Feature</span></div>
-                            <div class="pub-title"><a href="https://arxiv.org/pdf/2408.01055">Towards Agentic Runtime Healing</a></div>
-                            <p class="pub-authors"><span class="me">Zhensu Sun</span>, Haotian Zhu, Bowen Xu, Xiaoning Du, Li Li, David Lo</p>
-                        </article>
-
-                        <article class="pub" data-year="2026" data-venue="ICSE" data-my-role="0" data-unpublished="false">
-                            <div class="pub-chips"><span class="chip chip-a">ICSE 2026</span><span class="chip chip-track">Student Research Competition</span></div>
-                            <div class="pub-title"><a href="./papers/FastMCC.pdf">FastMCC: Multiple-hypotheses Code Completion with Natural Language Phrases as Alternative Suggestions</a></div>
-                            <p class="pub-authors"><span class="me">Zhensu Sun</span></p>
-                        </article>
-                    </div>
-
-                    <div class="year-group" data-year-group="2025">
-                        <div class="year-head"><span class="y">2025</span><span class="rule"></span><span class="n"></span></div>
-
-                        <article class="pub" data-year="2025" data-venue="ASE" data-my-role="0" data-unpublished="false">
+                    <article class="pub" data-year="2025" data-date="2025-12" data-venue="ASE" data-my-role="0" data-unpublished="false">
                             <div class="pub-chips"><span class="chip chip-a">ASE 2025</span></div>
                             <div class="pub-title"><a href="https://www.arxiv.org/pdf/2512.08266">Token Sugar: Making Source Code Sweeter for LLMs through Token-Efficient Shorthand</a></div>
                             <p class="pub-authors"><span class="me">Zhensu Sun</span>, Chengran Yang, Xiaoning Du, Zhou Yang, Li Li, David Lo</p>
                         </article>
 
-                    </div>
+                    <article class="pub" data-year="2025" data-date="2025-09" data-venue="EMNLP" data-my-role="0" data-unpublished="false">
+                            <div class="pub-chips"><span class="chip chip-b">EMNLP 2026</span><span class="chip chip-track">Findings</span></div>
+                            <div class="pub-title"><a href="https://www.arxiv.org/pdf/2509.24637">Extending Fill-In-the-Middle with Instructions for Steerable Code Completion</a></div>
+                            <p class="pub-authors"><span class="me">Zhensu Sun</span>, Chengran Yang, Chao Peng, Pengfei Gao, Xiaoning Du, Li Li, David Lo</p>
+                        </article>
 
-                    <div class="year-group" data-year-group="2024">
-                        <div class="year-head"><span class="y">2024</span><span class="rule"></span><span class="n"></span></div>
+                    <article class="pub" data-year="2025" data-date="2025-08" data-venue="ICSE" data-my-role="1" data-unpublished="false">
+                            <div class="pub-chips"><span class="chip chip-a">ICSE 2026</span><span class="chip chip-award">🏆 Distinguished Paper</span></div>
+                            <div class="pub-title"><a href="https://www.arxiv.org/pdf/2508.13666">The Hidden Cost of Readability: How Code Formatting Silently Consumes Your LLM Budget</a></div>
+                            <p class="pub-authors">Dangfeng Pan<sup tabindex="0" data-tip="Equal contribution">👥</sup>, <span class="me">Zhensu Sun</span><sup tabindex="0" data-tip="Equal contribution">👥</sup>, Cenyuan Zhang, David Lo, Xiaoning Du</p>
+                        </article>
 
-                        <article class="pub" data-year="2024" data-venue="ISSTA" data-my-role="0" data-unpublished="false">
+                    <article class="pub" data-year="2025" data-date="2025-03" data-venue="ICSE" data-my-role="2" data-unpublished="false">
+                            <div class="pub-chips"><span class="chip chip-a">ICSE 2026</span><span class="chip chip-award">🏆 Distinguished Paper</span></div>
+                            <div class="pub-title"><a href="https://arxiv.org/pdf/2503.14838">Think Like Human Developers: Harnessing Community Knowledge for Structured Code Reasoning</a></div>
+                            <p class="pub-authors">Chengran Yang, <span class="me">Zhensu Sun</span><sup tabindex="0" data-tip="Corresponding author">📧</sup>, Hong Jin Kang, Jieke Shi, David Lo</p>
+                        </article>
+
+                    <article class="pub" data-year="2024" data-date="2024-08" data-venue="ISSTA" data-my-role="0" data-unpublished="false">
                             <div class="pub-chips"><span class="chip chip-a">ISSTA 2024</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/pdf/2408.04194">FDI: Attack Neural Code Generation Systems through User Feedback Channel</a></div>
                             <p class="pub-authors"><span class="me">Zhensu Sun</span>, Xiaoning Du, Xiapu Luo, Fu Song, David Lo, Li Li</p>
                         </article>
 
-                        <article class="pub" data-year="2024" data-venue="ISSTA" data-my-role="0" data-unpublished="false">
-                            <div class="pub-chips"><span class="chip chip-a">ISSTA 2024</span><span class="chip chip-award">🏆 Distinguished Paper</span></div>
-                            <div class="pub-title"><a href="https://arxiv.org/pdf/2404.16333">AI Coders Are Among Us: Rethinking Programming Language Grammar Towards Efficient Code Generation</a></div>
-                            <p class="pub-authors"><span class="me">Zhensu Sun</span>, Xiaoning Du, Zhou Yang, Li Li, David Lo</p>
+                    <article class="pub" data-year="2024" data-date="2024-08" data-venue="CACM" data-my-role="0" data-unpublished="false">
+                            <div class="pub-chips"><span class="chip chip-b">CACM</span><span class="chip chip-award">🏆 Cover Feature</span></div>
+                            <div class="pub-title"><a href="https://arxiv.org/pdf/2408.01055">Towards Agentic Runtime Healing</a></div>
+                            <p class="pub-authors"><span class="me">Zhensu Sun</span>, Haotian Zhu, Bowen Xu, Xiaoning Du, Li Li, David Lo</p>
                         </article>
 
-                        <article class="pub" data-year="2024" data-venue="ICSE" data-my-role="0" data-unpublished="false">
-                            <div class="pub-chips"><span class="chip chip-a">ICSE 2024</span></div>
-                            <div class="pub-title"><a href="https://arxiv.org/pdf/2401.09964.pdf">When Neural Code Completion Models Size up the Situation: Attaining Cheaper and Faster Completion through Dynamic Model Inference</a></div>
-                            <p class="pub-authors"><span class="me">Zhensu Sun</span><sup tabindex="0" data-tip="Equal contribution">👥</sup>, Xiaoning Du<sup tabindex="0" data-tip="Equal contribution">👥</sup>, Fu Song, Shangwen Wang, Li Li</p>
-                        </article>
-
-                        <article class="pub" data-year="2024" data-venue="TKDE" data-my-role="3" data-unpublished="false">
-                            <div class="pub-chips"><span class="chip chip-a">TKDE</span></div>
-                            <div class="pub-title"><a href="https://arxiv.org/pdf/2303.01234.pdf">Fraud's Bargain Attack: Generating Adversarial Text Samples via Word Manipulation Process</a></div>
-                            <p class="pub-authors">Mingze Ni, <span class="me">Zhensu Sun</span>, Wei Liu</p>
-                        </article>
-
-                        <article class="pub" data-year="2024" data-venue="TOSEM" data-my-role="0" data-unpublished="false">
-                            <div class="pub-chips"><span class="chip chip-a">TOSEM</span></div>
-                            <div class="pub-title"><a href="https://arxiv.org/pdf/2209.05948.pdf">Don't Complete It! Preventing Unhelpful Code Completion for Productive and Sustainable Neural Code Completion Systems</a></div>
-                            <p class="pub-authors"><span class="me">Zhensu Sun</span>, Xiaoning Du, Fu Song, Shangwen Wang, Mingze Ni, Li Li, David Lo</p>
-                        </article>
-
-                        <article class="pub" data-year="2024" data-venue="TSE" data-my-role="3" data-unpublished="false">
+                    <article class="pub" data-year="2024" data-date="2024-05" data-venue="TSE" data-my-role="3" data-unpublished="false">
                             <div class="pub-chips"><span class="chip chip-a">TSE</span></div>
                             <div class="pub-title"><a href="https://www.researchgate.net/profile/Shangwen-Wang/publication/377187000_Fusing_Code_Searchers/links/6598e24a6f6e450f19ce5987/Fusing-Code-Searchers.pdf">Fusing Code Searchers</a></div>
                             <p class="pub-authors">Shangwen Wang, Mingyang Geng, Bo Lin, <span class="me">Zhensu Sun</span>, Ming Wen, Yepang Liu, Li Li, Tegawend&eacute; F Bissyand&eacute;, Xiaoguang Mao</p>
                         </article>
 
-                        <article class="pub" data-year="2024" data-venue="Machine Learning" data-my-role="3" data-unpublished="false">
+                    <article class="pub" data-year="2024" data-date="2024-04" data-venue="ISSTA" data-my-role="0" data-unpublished="false">
+                            <div class="pub-chips"><span class="chip chip-a">ISSTA 2024</span><span class="chip chip-award">🏆 Distinguished Paper</span></div>
+                            <div class="pub-title"><a href="https://arxiv.org/pdf/2404.16333">AI Coders Are Among Us: Rethinking Programming Language Grammar Towards Efficient Code Generation</a></div>
+                            <p class="pub-authors"><span class="me">Zhensu Sun</span>, Xiaoning Du, Zhou Yang, Li Li, David Lo</p>
+                        </article>
+
+                    <article class="pub" data-year="2024" data-date="2024-03" data-venue="Machine Learning" data-my-role="3" data-unpublished="false">
                             <div class="pub-chips"><span class="chip chip-b">Machine Learning</span></div>
                             <div class="pub-title"><a href="https://link.springer.com/article/10.1007/s10994-024-06539-6">Reversible jump attack to textual classifiers with modification reduction</a></div>
                             <p class="pub-authors">Mingze Ni, <span class="me">Zhensu Sun</span>, Wei Liu</p>
                         </article>
-                    </div>
 
-                    <div class="year-group" data-year-group="2023">
-                        <div class="year-head"><span class="y">2023</span><span class="rule"></span><span class="n"></span></div>
-
-                        <article class="pub" data-year="2023" data-venue="ESEC/FSE" data-my-role="0" data-unpublished="false">
-                            <div class="pub-chips"><span class="chip chip-a">ESEC/FSE 2023</span></div>
-                            <div class="pub-title"><a href="https://arxiv.org/pdf/2308.14401.pdf">CodeMark: Imperceptible Watermarking for Code Datasets against Neural Code Completion Models</a></div>
-                            <p class="pub-authors"><span class="me">Zhensu Sun</span><sup tabindex="0" data-tip="Equal contribution">👥</sup>, Xiaoning Du<sup tabindex="0" data-tip="Equal contribution">👥</sup>, Fu Song, Li Li</p>
+                    <article class="pub" data-year="2024" data-date="2024-01" data-venue="ICSE" data-my-role="0" data-unpublished="false">
+                            <div class="pub-chips"><span class="chip chip-a">ICSE 2024</span></div>
+                            <div class="pub-title"><a href="https://arxiv.org/pdf/2401.09964.pdf">When Neural Code Completion Models Size up the Situation: Attaining Cheaper and Faster Completion through Dynamic Model Inference</a></div>
+                            <p class="pub-authors"><span class="me">Zhensu Sun</span><sup tabindex="0" data-tip="Equal contribution">👥</sup>, Xiaoning Du<sup tabindex="0" data-tip="Equal contribution">👥</sup>, Fu Song, Shangwen Wang, Li Li</p>
                         </article>
 
-                        <article class="pub" data-year="2023" data-venue="ESEC/FSE" data-my-role="3" data-unpublished="false">
+                    <article class="pub" data-year="2023" data-date="2023-11" data-venue="ESEC/FSE" data-my-role="3" data-unpublished="false">
                             <div class="pub-chips"><span class="chip chip-a">ESEC/FSE 2023</span></div>
                             <div class="pub-title"><a href="https://www.researchgate.net/profile/Shangwen-Wang/publication/373141125_Natural_Language_to_Code_How_Far_Are_We/links/64dc28d625837316ee1201e5/Natural-Language-to-Code-How-Far-Are-We.pdf">Natural Language to Code: How Far Are We?</a></div>
                             <p class="pub-authors">Shangwen Wang, Mingyang Geng, Bo Lin, <span class="me">Zhensu Sun</span>, Ming Wen, Yepang Liu, Li Li, Tegawend&eacute; F Bissyand&eacute;, Xiaoguang Mao</p>
                         </article>
 
-                        <article class="pub" data-year="2023" data-venue="OOPSLA" data-my-role="3" data-unpublished="false">
+                    <article class="pub" data-year="2023" data-date="2023-10" data-venue="OOPSLA" data-my-role="3" data-unpublished="false">
                             <div class="pub-chips"><span class="chip chip-a">OOPSLA 2023</span></div>
                             <div class="pub-title"><a href="https://shangwenwang.github.io/files/OOPSLA-23.pdf">Two Birds with One Stone: Boosting Code Generation and Code Search via a Generative Adversarial Network</a></div>
                             <p class="pub-authors">Shangwen Wang, Bo Lin, <span class="me">Zhensu Sun</span>, Ming Wen, Yepang Liu, Yan Lei, Xiaoguang Mao</p>
                         </article>
-                    </div>
 
-                    <div class="year-group" data-year-group="2022">
-                        <div class="year-head"><span class="y">2022</span><span class="rule"></span><span class="n"></span></div>
+                    <article class="pub" data-year="2023" data-date="2023-08" data-venue="ESEC/FSE" data-my-role="0" data-unpublished="false">
+                            <div class="pub-chips"><span class="chip chip-a">ESEC/FSE 2023</span></div>
+                            <div class="pub-title"><a href="https://arxiv.org/pdf/2308.14401.pdf">CodeMark: Imperceptible Watermarking for Code Datasets against Neural Code Completion Models</a></div>
+                            <p class="pub-authors"><span class="me">Zhensu Sun</span><sup tabindex="0" data-tip="Equal contribution">👥</sup>, Xiaoning Du<sup tabindex="0" data-tip="Equal contribution">👥</sup>, Fu Song, Li Li</p>
+                        </article>
 
-                        <article class="pub" data-year="2022" data-venue="ICSE" data-my-role="0" data-unpublished="false">
+                    <article class="pub" data-year="2023" data-date="2023-03" data-venue="TKDE" data-my-role="3" data-unpublished="false">
+                            <div class="pub-chips"><span class="chip chip-a">TKDE</span></div>
+                            <div class="pub-title"><a href="https://arxiv.org/pdf/2303.01234.pdf">Fraud's Bargain Attack: Generating Adversarial Text Samples via Word Manipulation Process</a></div>
+                            <p class="pub-authors">Mingze Ni, <span class="me">Zhensu Sun</span>, Wei Liu</p>
+                        </article>
+
+                    <article class="pub" data-year="2022" data-date="2022-09" data-venue="TOSEM" data-my-role="0" data-unpublished="false">
+                            <div class="pub-chips"><span class="chip chip-a">TOSEM</span></div>
+                            <div class="pub-title"><a href="https://arxiv.org/pdf/2209.05948.pdf">Don't Complete It! Preventing Unhelpful Code Completion for Productive and Sustainable Neural Code Completion Systems</a></div>
+                            <p class="pub-authors"><span class="me">Zhensu Sun</span>, Xiaoning Du, Fu Song, Shangwen Wang, Mingze Ni, Li Li, David Lo</p>
+                        </article>
+
+                    <article class="pub" data-year="2022" data-date="2022-02" data-venue="ICSE" data-my-role="0" data-unpublished="false">
                             <div class="pub-chips"><span class="chip chip-a">ICSE 2022</span><span class="chip chip-award">🏆 Nominated for Distinguished Paper</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/pdf/2202.06649.pdf">On the Importance of Building High-quality Training Datasets for Neural Code Search</a></div>
                             <p class="pub-authors"><span class="me">Zhensu Sun</span>, Li Li, Yan Liu, Xiaoning Du, Li Li</p>
                         </article>
 
-                        <article class="pub" data-year="2022" data-venue="WWW" data-my-role="0" data-unpublished="false">
+                    <article class="pub" data-year="2021" data-date="2021-10" data-venue="WWW" data-my-role="0" data-unpublished="false">
                             <div class="pub-chips"><span class="chip chip-a">WWW 2022</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/pdf/2110.12925.pdf">CoProtector: Protect Open-Source Code against Unauthorized Training Usage with Data Poisoning</a></div>
                             <p class="pub-authors"><span class="me">Zhensu Sun</span>, Xiaoning Du, Fu Song, Mingze Ni, Li Li</p>
                         </article>
-                    </div>
 
-                    <div class="year-group" data-year-group="2020">
-                        <div class="year-head"><span class="y">2020</span><span class="rule"></span><span class="n"></span></div>
-
-                        <article class="pub" data-year="2020" data-venue="SANER" data-my-role="0" data-unpublished="false">
+                    <article class="pub" data-year="2020" data-date="2020-02" data-venue="SANER" data-my-role="0" data-unpublished="false">
                             <div class="pub-chips"><span class="chip chip-b">SANER 2020</span><span class="chip chip-track">Early Research Achievement Track</span></div>
                             <div class="pub-title"><a href="https://arxiv.org/pdf/2005.11757">Req2Lib: A Semantic Neural Model for Software Library Recommendation</a></div>
                             <p class="pub-authors"><span class="me">Zhensu Sun</span>, Yan Liu, Ziming Cheng, Chen Yang, Pengyu Che</p>
                         </article>
-                    </div>
 
                     <div class="pub-empty" id="pub-empty">
                         No publications match the current filters. <button type="button" id="empty-reset">Reset filters</button>
@@ -831,13 +822,55 @@
 
     /* ---------- Publication filters ---------- */
     var state = { role: 'all', year: 'all', venue: 'all' };
-    var pubs = Array.prototype.slice.call(document.querySelectorAll('#publications-list .pub'));
-    var groups = Array.prototype.slice.call(document.querySelectorAll('#publications-list .year-group'));
+    var listEl = document.getElementById('publications-list');
+    var pubs = Array.prototype.slice.call(listEl.querySelectorAll('.pub'));
     var roleButtons = Array.prototype.slice.call(document.querySelectorAll('[data-role-filter]'));
     var yearSelect = document.getElementById('filter-year');
     var venueSelect = document.getElementById('filter-venue');
     var countEl = document.getElementById('pub-count');
     var emptyEl = document.getElementById('pub-empty');
+
+    /* Order papers by the date they first became public (data-date, "YYYY-MM"), newest first,
+       and group them by that year. Papers sharing a month keep their order in the HTML. */
+    pubs = pubs.map(function (pub, i) { return { pub: pub, i: i }; }).sort(function (a, b) {
+        var da = a.pub.dataset.date || '', db = b.pub.dataset.date || '';
+        if (da !== db) return da < db ? 1 : -1;
+        return a.i - b.i;
+    }).map(function (x) { return x.pub; });
+
+    var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var groups = [];
+    var groupByYear = {};
+    pubs.forEach(function (pub) {
+        var year = (pub.dataset.date || '').slice(0, 4) || pub.dataset.year;
+        pub.dataset.year = year;
+        var month = MONTHS[parseInt((pub.dataset.date || '').slice(5, 7), 10) - 1];
+        if (month && !pub.querySelector('.pub-date')) {
+            var date = document.createElement('div');
+            date.className = 'pub-date';
+            date.title = 'First public: ' + month + ' ' + year;
+            date.innerHTML = '<b></b>';
+            date.querySelector('b').textContent = month;
+            date.appendChild(document.createTextNode(year));
+            pub.insertBefore(date, pub.firstChild);
+        }
+        var group = groupByYear[year];
+        if (!group) {
+            group = document.createElement('div');
+            group.className = 'year-group';
+            group.dataset.yearGroup = year;
+            group.innerHTML = '<div class="year-head"><span class="y"></span><span class="rule"></span><span class="n"></span></div>';
+            group.querySelector('.y').textContent = year;
+            groupByYear[year] = group;
+            groups.push(group);
+            listEl.insertBefore(group, emptyEl);
+            var opt = document.createElement('option');
+            opt.value = year;
+            opt.textContent = year;
+            yearSelect.appendChild(opt);
+        }
+        group.appendChild(pub);
+    });
 
     function matches(pub) {
         var role = parseInt(pub.dataset.myRole, 10);
