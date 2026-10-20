@@ -959,9 +959,12 @@
     var CHECK = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.5 5 9l4.5-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     var dropdowns = [];
     var yearOptions = groups.map(function (g) { return g.dataset.yearGroup; });
-    var venueOptions = pubs.map(function (p) { return p.dataset.venue; })
-        .filter(function (v, i, a) { return a.indexOf(v) === i; })
-        .sort(function (a, b) { return a < b ? -1 : a > b ? 1 : 0; });
+    // venues ordered by number of papers (most first), ties alphabetically
+    var venueTotals = {};
+    pubs.forEach(function (p) { venueTotals[p.dataset.venue] = (venueTotals[p.dataset.venue] || 0) + 1; });
+    var venueOptions = Object.keys(venueTotals).sort(function (a, b) {
+        return venueTotals[b] - venueTotals[a] || (a < b ? -1 : a > b ? 1 : 0);
+    });
 
     function makeDropdown(id, key, options) {
         var wrap = document.getElementById(id);
