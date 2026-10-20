@@ -346,12 +346,29 @@
     .year-head .n { font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
 
     .pub {
+      display: grid;
+      grid-template-columns: 58px minmax(0, 1fr);
+      column-gap: 16px;
       padding: 14px 14px 15px;
       margin: 0 -14px;
       border-radius: 10px;
       transition: background 0.15s ease;
     }
     .pub:hover { background: var(--surface); box-shadow: var(--shadow); }
+    .pub > * { grid-column: 2; }
+    .pub-date {
+      grid-column: 1;
+      grid-row: 1 / span 3;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      line-height: 1.5;
+      letter-spacing: 0.02em;
+      color: var(--muted);
+      padding: 3px 8px 0 0;
+      margin-right: -8px;
+      border-right: 1px solid var(--line);
+    }
+    .pub-date b { display: block; font-weight: 500; color: var(--ink); }
     .pub-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
     .chip {
       font-family: var(--mono);
@@ -455,7 +472,8 @@
       .side-contact { grid-column: 1 / -1; margin-top: 6px; }
       .side-links { grid-column: 1 / -1; margin-top: 4px; }
       .section { margin-bottom: 44px; }
-      .pub { margin: 0 -8px; padding: 12px 8px 13px; }
+      .pub { margin: 0 -8px; padding: 12px 8px 13px; grid-template-columns: 50px minmax(0, 1fr); column-gap: 12px; }
+      .pub-date { font-size: 11px; padding-right: 6px; margin-right: -6px; }
       .pub-title { font-size: 17px; }
       .pub-count { margin-left: 0; width: 100%; order: 9; }
       .pub-toolbar { top: 51px; }
@@ -580,8 +598,9 @@
 
                 <div id="publications-list">
                     <!-- One <article> per paper, newest first. data-date = the month the paper first became public
-                         (arXiv v1, or the venue publication date if there is no preprint). The year groups and the
-                         year dropdown are generated from data-date by the script at the bottom of the page. -->
+                         (arXiv v1, or the venue publication date if there is no preprint). The date label on the left,
+                         the year groups and the year dropdown are all generated from data-date by the script at the
+                         bottom of the page. -->
 
                     <article class="pub" data-year="2026" data-date="2026-09" data-venue="EMNLP" data-my-role="2" data-unpublished="false">
                             <div class="pub-chips"><span class="chip chip-b">EMNLP 2026</span><span class="chip chip-track">Findings</span></div>
@@ -819,11 +838,22 @@
         return a.i - b.i;
     }).map(function (x) { return x.pub; });
 
+    var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     var groups = [];
     var groupByYear = {};
     pubs.forEach(function (pub) {
         var year = (pub.dataset.date || '').slice(0, 4) || pub.dataset.year;
         pub.dataset.year = year;
+        var month = MONTHS[parseInt((pub.dataset.date || '').slice(5, 7), 10) - 1];
+        if (month && !pub.querySelector('.pub-date')) {
+            var date = document.createElement('div');
+            date.className = 'pub-date';
+            date.title = 'First public: ' + month + ' ' + year;
+            date.innerHTML = '<b></b>';
+            date.querySelector('b').textContent = month;
+            date.appendChild(document.createTextNode(year));
+            pub.insertBefore(date, pub.firstChild);
+        }
         var group = groupByYear[year];
         if (!group) {
             group = document.createElement('div');
