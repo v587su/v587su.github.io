@@ -289,7 +289,7 @@
       transition: border-color 0.2s ease;
     }
     .pub-toolbar.stuck { border-bottom-color: var(--line); }
-    .seg { display: inline-flex; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 2px; }
+    .seg { display: inline-flex; align-items: stretch; height: 32px; box-sizing: border-box; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 2px; }
     .seg button {
       font-family: var(--sans);
       font-size: 13px;
@@ -298,7 +298,8 @@
       background: transparent;
       border: 0;
       border-radius: 6px;
-      padding: 5px 11px;
+      padding: 0 11px;
+      line-height: 1;
       cursor: pointer;
       white-space: nowrap;
     }
@@ -317,7 +318,9 @@
       background: var(--surface);
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 6px 9px 6px 11px;
+      height: 32px;
+      box-sizing: border-box;
+      padding: 0 9px 0 11px;
       cursor: pointer;
       white-space: nowrap;
     }
