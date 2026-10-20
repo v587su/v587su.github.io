@@ -303,18 +303,83 @@
       white-space: nowrap;
     }
     .seg button.active { background: var(--accent-soft); color: var(--accent); }
-    .pub-toolbar select {
+    /* Filter dropdowns: a button that opens a small menu with per-option counts */
+    .fwrap { position: relative; display: inline-block; }
+    .fbtn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       font-family: var(--sans);
       font-size: 13px;
       font-weight: 500;
+      line-height: 1.3;
       color: var(--ink);
       background: var(--surface);
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 6px 10px;
+      padding: 6px 9px 6px 11px;
       cursor: pointer;
-      max-width: 150px;
+      white-space: nowrap;
     }
+    .fbtn .k { color: var(--muted); font-weight: 400; }
+    .fbtn svg { width: 12px; height: 12px; color: var(--muted); flex: none; }
+    .fbtn:hover { border-color: var(--muted); }
+    .fbtn[aria-expanded="true"] { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+    .fbtn.active { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
+    .fbtn.active .k, .fbtn.active svg { color: var(--accent); }
+    .fbtn .x {
+      display: none;
+      width: 16px;
+      height: 16px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin: -2px -2px -2px 0;
+    }
+    .fbtn .x svg { width: 9px; height: 9px; }
+    .fbtn.active .x { display: inline-flex; }
+    .fbtn.active .x:hover { background: var(--accent); }
+    .fbtn.active .x:hover svg { color: #fff; }
+    .fbtn.active .chev { display: none; }
+    .fmenu {
+      position: absolute;
+      left: 0;
+      top: calc(100% + 6px);
+      min-width: 180px;
+      max-height: 60vh;
+      overflow-y: auto;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 5px;
+      z-index: 50;
+    }
+    .fmenu[hidden] { display: none; }
+    .fmenu button {
+      position: relative;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--ink);
+      background: transparent;
+      border: 0;
+      border-radius: 6px;
+      padding: 6px 8px 6px 28px;
+      cursor: pointer;
+      text-align: left;
+      white-space: nowrap;
+    }
+    .fmenu button:hover, .fmenu button:focus-visible { background: var(--surface-2); outline: 0; }
+    .fmenu button[aria-selected="true"] { color: var(--accent); font-weight: 500; }
+    .fmenu button svg { position: absolute; left: 9px; width: 12px; height: 12px; display: none; }
+    .fmenu button[aria-selected="true"] svg { display: block; }
+    .fmenu button .c { margin-left: auto; padding-left: 16px; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+    .fmenu button.zero { color: var(--muted); }
+    .fmenu hr { border: 0; border-top: 1px solid var(--line); margin: 4px 2px; }
     .pub-toolbar .reset {
       font-size: 13px;
       color: var(--muted);
@@ -345,16 +410,42 @@
     .year-head .rule { flex: 1; border-top: 1px solid var(--line); }
     .year-head .n { font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
 
+    /* Timeline: a vertical line per year group, a dot per paper, the month label on the
+       first paper of each month (ledger style). */
+    .year-body { position: relative; }
+    .year-body::before {
+      content: "";
+      position: absolute;
+      left: 44px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: var(--line);
+    }
     .pub {
+      position: relative;
       display: grid;
-      grid-template-columns: 58px minmax(0, 1fr);
-      column-gap: 16px;
+      grid-template-columns: 44px minmax(0, 1fr);
+      column-gap: 20px;
       padding: 14px 14px 15px;
       margin: 0 -14px;
       border-radius: 10px;
       transition: background 0.15s ease;
     }
     .pub:hover { background: var(--surface); box-shadow: var(--shadow); }
+    .pub::before {
+      content: "";
+      position: absolute;
+      left: 55px;
+      top: 22px;
+      width: 7px;
+      height: 7px;
+      box-sizing: border-box;
+      border-radius: 50%;
+      border: 1.5px solid var(--accent);
+      background: var(--bg);
+    }
+    .pub:hover::before { background: var(--surface); }
     .pub > * { grid-column: 2; }
     .pub-date {
       grid-column: 1;
@@ -362,13 +453,12 @@
       font-family: var(--mono);
       font-size: 11.5px;
       line-height: 1.5;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
       color: var(--muted);
-      padding: 3px 8px 0 0;
-      margin-right: -8px;
-      border-right: 1px solid var(--line);
+      padding: 4px 18px 0 0;
+      text-align: right;
     }
-    .pub-date b { display: block; font-weight: 500; color: var(--ink); }
     .pub-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
     .chip {
       font-family: var(--mono);
@@ -472,8 +562,10 @@
       .side-contact { grid-column: 1 / -1; margin-top: 6px; }
       .side-links { grid-column: 1 / -1; margin-top: 4px; }
       .section { margin-bottom: 44px; }
-      .pub { margin: 0 -8px; padding: 12px 8px 13px; grid-template-columns: 50px minmax(0, 1fr); column-gap: 12px; }
-      .pub-date { font-size: 11px; padding-right: 6px; margin-right: -6px; }
+      .pub { margin: 0 -8px; padding: 12px 8px 13px; grid-template-columns: 40px minmax(0, 1fr); column-gap: 14px; }
+      .pub::before { left: 44px; top: 20px; }
+      .year-body::before { left: 40px; }
+      .pub-date { font-size: 11px; padding-right: 14px; }
       .pub-title { font-size: 17px; }
       .pub-count { margin-left: 0; width: 100%; order: 9; }
       .pub-toolbar { top: 51px; }
@@ -571,27 +663,14 @@
                         <button type="button" data-role-filter="first">👤 First / co-first</button>
                         <button type="button" data-role-filter="corresponding">📧 Corresponding</button>
                     </div>
-                    <select id="filter-year" aria-label="Filter by year">
-                        <option value="all">All years</option>
-                    </select>
-                    <select id="filter-venue" aria-label="Filter by venue">
-                        <option value="all">All venues</option>
-                        <option value="ASE">ASE</option>
-                        <option value="CACM">CACM</option>
-                        <option value="EMNLP">EMNLP</option>
-                        <option value="ESEC/FSE">ESEC/FSE</option>
-                        <option value="ICML">ICML</option>
-                        <option value="ICSE">ICSE</option>
-                        <option value="ISSTA">ISSTA</option>
-                        <option value="Machine Learning">Machine Learning</option>
-                        <option value="OOPSLA">OOPSLA</option>
-                        <option value="SANER">SANER</option>
-                        <option value="TKDE">TKDE</option>
-                        <option value="TOSEM">TOSEM</option>
-                        <option value="TSE">TSE</option>
-                        <option value="WWW">WWW</option>
-                        <option value="arXiv">arXiv</option>
-                    </select>
+                    <div class="fwrap" id="filter-year" data-label="Year">
+                        <button type="button" class="fbtn" aria-haspopup="listbox" aria-expanded="false"><span class="k">Year</span><span class="v">All</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="x" role="button" aria-label="Clear" tabindex="0"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9 3l-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></button>
+                        <div class="fmenu" role="listbox" aria-label="Filter by year" hidden></div>
+                    </div>
+                    <div class="fwrap" id="filter-venue" data-label="Venue">
+                        <button type="button" class="fbtn" aria-haspopup="listbox" aria-expanded="false"><span class="k">Venue</span><span class="v">All</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="x" role="button" aria-label="Clear" tabindex="0"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9 3l-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></button>
+                        <div class="fmenu" role="listbox" aria-label="Filter by venue" hidden></div>
+                    </div>
                     <button type="button" class="reset" id="reset-filters">Reset</button>
                     <span class="pub-count" id="pub-count"></span>
                 </div>
@@ -825,8 +904,6 @@
     var listEl = document.getElementById('publications-list');
     var pubs = Array.prototype.slice.call(listEl.querySelectorAll('.pub'));
     var roleButtons = Array.prototype.slice.call(document.querySelectorAll('[data-role-filter]'));
-    var yearSelect = document.getElementById('filter-year');
-    var venueSelect = document.getElementById('filter-venue');
     var countEl = document.getElementById('pub-count');
     var emptyEl = document.getElementById('pub-empty');
 
@@ -848,10 +925,8 @@
         if (month && !pub.querySelector('.pub-date')) {
             var date = document.createElement('div');
             date.className = 'pub-date';
+            date.dataset.month = month;
             date.title = 'First public: ' + month + ' ' + year;
-            date.innerHTML = '<b></b>';
-            date.querySelector('b').textContent = month;
-            date.appendChild(document.createTextNode(year));
             pub.insertBefore(date, pub.firstChild);
         }
         var group = groupByYear[year];
@@ -859,27 +934,110 @@
             group = document.createElement('div');
             group.className = 'year-group';
             group.dataset.yearGroup = year;
-            group.innerHTML = '<div class="year-head"><span class="y"></span><span class="rule"></span><span class="n"></span></div>';
+            group.innerHTML = '<div class="year-head"><span class="y"></span><span class="rule"></span><span class="n"></span></div><div class="year-body"></div>';
             group.querySelector('.y').textContent = year;
             groupByYear[year] = group;
             groups.push(group);
             listEl.insertBefore(group, emptyEl);
-            var opt = document.createElement('option');
-            opt.value = year;
-            opt.textContent = year;
-            yearSelect.appendChild(opt);
         }
-        group.appendChild(pub);
+        group.querySelector('.year-body').appendChild(pub);
     });
 
-    function matches(pub) {
+    function matches(pub, ignore) {
         var role = parseInt(pub.dataset.myRole, 10);
         if (state.role === 'first' && !(role === 0 || role === 1)) return false;
         if (state.role === 'corresponding' && role !== 2) return false;
-        if (state.year !== 'all' && pub.dataset.year !== state.year) return false;
-        if (state.venue !== 'all' && pub.dataset.venue !== state.venue) return false;
+        if (ignore !== 'year' && state.year !== 'all' && pub.dataset.year !== state.year) return false;
+        if (ignore !== 'venue' && state.venue !== 'all' && pub.dataset.venue !== state.venue) return false;
         return true;
     }
+
+    /* ---------- Dropdown filters (year, venue) ---------- */
+    var CHECK = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.5 5 9l4.5-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    var dropdowns = [];
+    var yearOptions = groups.map(function (g) { return g.dataset.yearGroup; });
+    var venueOptions = pubs.map(function (p) { return p.dataset.venue; })
+        .filter(function (v, i, a) { return a.indexOf(v) === i; })
+        .sort(function (a, b) { return a < b ? -1 : a > b ? 1 : 0; });
+
+    function makeDropdown(id, key, options) {
+        var wrap = document.getElementById(id);
+        var btn = wrap.querySelector('.fbtn');
+        var valueEl = btn.querySelector('.v');
+        var clearEl = btn.querySelector('.x');
+        var menu = wrap.querySelector('.fmenu');
+        var label = wrap.dataset.label;
+
+        function render() {
+            var counts = {};
+            var total = 0;
+            pubs.forEach(function (pub) {
+                if (!matches(pub, key)) return;
+                counts[pub.dataset[key]] = (counts[pub.dataset[key]] || 0) + 1;
+                total++;
+            });
+            menu.innerHTML = '';
+            [{ value: 'all', text: 'All ' + label.toLowerCase() + 's', count: total }].concat(
+                options.map(function (o) { return { value: o, text: o, count: counts[o] || 0 }; })
+            ).forEach(function (o, i) {
+                if (i === 1) menu.appendChild(document.createElement('hr'));
+                var item = document.createElement('button');
+                item.type = 'button';
+                item.setAttribute('role', 'option');
+                item.setAttribute('aria-selected', state[key] === o.value ? 'true' : 'false');
+                item.dataset.value = o.value;
+                if (!o.count) item.className = 'zero';
+                item.innerHTML = CHECK;
+                item.appendChild(document.createTextNode(o.text));
+                var c = document.createElement('span');
+                c.className = 'c';
+                c.textContent = o.count;
+                item.appendChild(c);
+                item.addEventListener('click', function () { select(o.value); close(); btn.focus(); });
+                menu.appendChild(item);
+            });
+            valueEl.textContent = state[key] === 'all' ? 'All' : state[key];
+            btn.classList.toggle('active', state[key] !== 'all');
+        }
+        function select(value) { state[key] = value; apply(); }
+        function open() {
+            dropdowns.forEach(function (d) { if (d !== api) d.close(); });
+            render();
+            menu.hidden = false;
+            btn.setAttribute('aria-expanded', 'true');
+            var current = menu.querySelector('[aria-selected="true"]');
+            if (current) current.focus();
+        }
+        function close() {
+            if (menu.hidden) return;
+            menu.hidden = true;
+            btn.setAttribute('aria-expanded', 'false');
+        }
+        btn.addEventListener('click', function (e) {
+            if (clearEl.contains(e.target)) { select('all'); close(); return; }
+            menu.hidden ? open() : close();
+        });
+        clearEl.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); select('all'); close(); btn.focus(); }
+        });
+        wrap.addEventListener('keydown', function (e) {
+            var items = Array.prototype.slice.call(menu.querySelectorAll('button'));
+            var idx = items.indexOf(document.activeElement);
+            if (e.key === 'Escape') { close(); btn.focus(); }
+            else if (e.key === 'ArrowDown' && !menu.hidden) { e.preventDefault(); (items[idx + 1] || items[0]).focus(); }
+            else if (e.key === 'ArrowUp' && !menu.hidden) { e.preventDefault(); (items[idx - 1] || items[items.length - 1]).focus(); }
+            else if (e.key === 'ArrowDown' && menu.hidden && e.target === btn) { e.preventDefault(); open(); }
+        });
+        var api = { close: close, render: render, wrap: wrap };
+        dropdowns.push(api);
+        render();
+        return api;
+    }
+    makeDropdown('filter-year', 'year', yearOptions);
+    makeDropdown('filter-venue', 'venue', venueOptions);
+    document.addEventListener('click', function (e) {
+        dropdowns.forEach(function (d) { if (!d.wrap.contains(e.target)) d.close(); });
+    });
 
     function apply() {
         var visibleTotal = 0;
@@ -889,15 +1047,25 @@
             if (show) visibleTotal++;
         });
         groups.forEach(function (group) {
-            var visible = group.querySelectorAll('.pub:not([style*="none"])').length;
-            group.style.display = visible ? '' : 'none';
+            var shown = Array.prototype.slice.call(group.querySelectorAll('.pub:not([style*="none"])'));
+            group.style.display = shown.length ? '' : 'none';
             var n = group.querySelector('.year-head .n');
-            if (n) n.textContent = visible + (visible === 1 ? ' paper' : ' papers');
+            if (n) n.textContent = shown.length + (shown.length === 1 ? ' paper' : ' papers');
+            // month label only on the first visible paper of each month
+            var lastMonth = null;
+            shown.forEach(function (pub) {
+                var label = pub.querySelector('.pub-date');
+                if (!label) return;
+                var month = (pub.dataset.date || '').slice(0, 7);
+                label.textContent = month !== lastMonth ? label.dataset.month : '';
+                lastMonth = month;
+            });
         });
         emptyEl.style.display = visibleTotal ? '' : 'block';
         countEl.textContent = visibleTotal === pubs.length
             ? pubs.length + ' papers'
             : visibleTotal + ' / ' + pubs.length + ' papers';
+        dropdowns.forEach(function (d) { d.render(); });
     }
 
     roleButtons.forEach(function (btn) {
@@ -907,14 +1075,10 @@
             apply();
         });
     });
-    yearSelect.addEventListener('change', function () { state.year = this.value; apply(); });
-    venueSelect.addEventListener('change', function () { state.venue = this.value; apply(); });
 
     function reset() {
         state = { role: 'all', year: 'all', venue: 'all' };
         roleButtons.forEach(function (b) { b.classList.toggle('active', b.dataset.roleFilter === 'all'); });
-        yearSelect.value = 'all';
-        venueSelect.value = 'all';
         apply();
     }
     document.getElementById('reset-filters').addEventListener('click', reset);
