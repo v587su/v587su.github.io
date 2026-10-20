@@ -345,16 +345,42 @@
     .year-head .rule { flex: 1; border-top: 1px solid var(--line); }
     .year-head .n { font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
 
+    /* Timeline: a vertical line per year group, a dot per paper, the month label on the
+       first paper of each month (ledger style). */
+    .year-body { position: relative; }
+    .year-body::before {
+      content: "";
+      position: absolute;
+      left: 44px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: var(--line);
+    }
     .pub {
+      position: relative;
       display: grid;
-      grid-template-columns: 58px minmax(0, 1fr);
-      column-gap: 16px;
+      grid-template-columns: 44px minmax(0, 1fr);
+      column-gap: 20px;
       padding: 14px 14px 15px;
       margin: 0 -14px;
       border-radius: 10px;
       transition: background 0.15s ease;
     }
     .pub:hover { background: var(--surface); box-shadow: var(--shadow); }
+    .pub::before {
+      content: "";
+      position: absolute;
+      left: 55px;
+      top: 22px;
+      width: 7px;
+      height: 7px;
+      box-sizing: border-box;
+      border-radius: 50%;
+      border: 1.5px solid var(--accent);
+      background: var(--bg);
+    }
+    .pub:hover::before { background: var(--surface); }
     .pub > * { grid-column: 2; }
     .pub-date {
       grid-column: 1;
@@ -362,13 +388,12 @@
       font-family: var(--mono);
       font-size: 11.5px;
       line-height: 1.5;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
       color: var(--muted);
-      padding: 3px 8px 0 0;
-      margin-right: -8px;
-      border-right: 1px solid var(--line);
+      padding: 4px 18px 0 0;
+      text-align: right;
     }
-    .pub-date b { display: block; font-weight: 500; color: var(--ink); }
     .pub-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
     .chip {
       font-family: var(--mono);
@@ -472,8 +497,10 @@
       .side-contact { grid-column: 1 / -1; margin-top: 6px; }
       .side-links { grid-column: 1 / -1; margin-top: 4px; }
       .section { margin-bottom: 44px; }
-      .pub { margin: 0 -8px; padding: 12px 8px 13px; grid-template-columns: 50px minmax(0, 1fr); column-gap: 12px; }
-      .pub-date { font-size: 11px; padding-right: 6px; margin-right: -6px; }
+      .pub { margin: 0 -8px; padding: 12px 8px 13px; grid-template-columns: 40px minmax(0, 1fr); column-gap: 14px; }
+      .pub::before { left: 44px; top: 20px; }
+      .year-body::before { left: 40px; }
+      .pub-date { font-size: 11px; padding-right: 14px; }
       .pub-title { font-size: 17px; }
       .pub-count { margin-left: 0; width: 100%; order: 9; }
       .pub-toolbar { top: 51px; }
@@ -848,10 +875,8 @@
         if (month && !pub.querySelector('.pub-date')) {
             var date = document.createElement('div');
             date.className = 'pub-date';
+            date.dataset.month = month;
             date.title = 'First public: ' + month + ' ' + year;
-            date.innerHTML = '<b></b>';
-            date.querySelector('b').textContent = month;
-            date.appendChild(document.createTextNode(year));
             pub.insertBefore(date, pub.firstChild);
         }
         var group = groupByYear[year];
@@ -859,7 +884,7 @@
             group = document.createElement('div');
             group.className = 'year-group';
             group.dataset.yearGroup = year;
-            group.innerHTML = '<div class="year-head"><span class="y"></span><span class="rule"></span><span class="n"></span></div>';
+            group.innerHTML = '<div class="year-head"><span class="y"></span><span class="rule"></span><span class="n"></span></div><div class="year-body"></div>';
             group.querySelector('.y').textContent = year;
             groupByYear[year] = group;
             groups.push(group);
@@ -869,7 +894,7 @@
             opt.textContent = year;
             yearSelect.appendChild(opt);
         }
-        group.appendChild(pub);
+        group.querySelector('.year-body').appendChild(pub);
     });
 
     function matches(pub) {
@@ -889,10 +914,19 @@
             if (show) visibleTotal++;
         });
         groups.forEach(function (group) {
-            var visible = group.querySelectorAll('.pub:not([style*="none"])').length;
-            group.style.display = visible ? '' : 'none';
+            var shown = Array.prototype.slice.call(group.querySelectorAll('.pub:not([style*="none"])'));
+            group.style.display = shown.length ? '' : 'none';
             var n = group.querySelector('.year-head .n');
-            if (n) n.textContent = visible + (visible === 1 ? ' paper' : ' papers');
+            if (n) n.textContent = shown.length + (shown.length === 1 ? ' paper' : ' papers');
+            // month label only on the first visible paper of each month
+            var lastMonth = null;
+            shown.forEach(function (pub) {
+                var label = pub.querySelector('.pub-date');
+                if (!label) return;
+                var month = (pub.dataset.date || '').slice(0, 7);
+                label.textContent = month !== lastMonth ? label.dataset.month : '';
+                lastMonth = month;
+            });
         });
         emptyEl.style.display = visibleTotal ? '' : 'block';
         countEl.textContent = visibleTotal === pubs.length
