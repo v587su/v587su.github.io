@@ -339,15 +339,15 @@
     }
     .svc-detail { margin: 6px 0 0; font-size: 13.5px; line-height: 1.55; color: var(--muted); }
     .svc-legend {
-      display: flex; flex-wrap: wrap; gap: 14px;
-      margin: 28px 0 0; padding-left: 22px;
+      display: none; flex-wrap: wrap; gap: 14px;
+      margin: 14px 0 0; padding-left: 22px;
       font-family: var(--mono); font-size: 11px; color: var(--muted);
     }
+    .svc-rail:has(details[open]) + .svc-legend { display: flex; }
     .svc-legend span { display: inline-flex; align-items: center; gap: 6px; }
     .svc-legend i { width: 10px; height: 10px; border-radius: 3px; box-sizing: border-box; }
     @media (max-width: 760px) {
       .svc-cols { grid-template-columns: 1fr; row-gap: 30px; }
-      .svc-legend { margin-top: 18px; }
     }
 
     /* ---------- Publications ---------- */
@@ -753,16 +753,16 @@
                                 <ul class="svc-venues"><li class="chip chip-a">TSE</li></ul>
                             </details>
                         </div>
+                        <div class="svc-legend" aria-hidden="true">
+                            <span><i style="background: var(--chip-a-bg); border: 1px solid var(--chip-a-fg)"></i>journal</span>
+                            <span><i style="background: var(--chip-b-bg); border: 1px solid var(--chip-b-fg)"></i>conference</span>
+                            <span><i style="background: var(--chip-pre-bg); border: 1px solid var(--chip-pre-fg)"></i>workshop</span>
+                        </div>
                     </div>
                     <div>
                         <h3 class="svc-sub">Organizing</h3>
                         <div class="svc-rail">
                             <div class="svc-item"><span class="svc-node"></span><span class="svc-year">2025</span><div class="svc-role">Social Media Co-Chair</div><p class="svc-detail">FORGE'25, ACM International Conference on AI Foundation Models and Software Engineering</p></div>
-                        </div>
-                        <div class="svc-legend" aria-hidden="true">
-                            <span><i style="background: var(--chip-a-bg); border: 1px solid var(--chip-a-fg)"></i>journal</span>
-                            <span><i style="background: var(--chip-b-bg); border: 1px solid var(--chip-b-fg)"></i>conference</span>
-                            <span><i style="background: var(--chip-pre-bg); border: 1px solid var(--chip-pre-fg)"></i>workshop</span>
                         </div>
                     </div>
                 </div>
