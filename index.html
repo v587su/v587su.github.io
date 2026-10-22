@@ -338,14 +338,6 @@
       margin-top: 2px;
     }
     .svc-detail { margin: 6px 0 0; font-size: 13.5px; line-height: 1.55; color: var(--muted); }
-    .svc-legend {
-      display: none; flex-wrap: wrap; gap: 14px;
-      margin: 14px 0 0; padding-left: 22px;
-      font-family: var(--mono); font-size: 11px; color: var(--muted);
-    }
-    .svc-rail:has(details[open]) + .svc-legend { display: flex; }
-    .svc-legend span { display: inline-flex; align-items: center; gap: 6px; }
-    .svc-legend i { width: 10px; height: 10px; border-radius: 3px; box-sizing: border-box; }
     @media (max-width: 760px) {
       .svc-cols { grid-template-columns: 1fr; row-gap: 30px; }
     }
@@ -731,29 +723,24 @@
                      (no sub-reviews; artifact evaluations and reviews still in progress included), by the year of the
                      assignment. Three rows only: this year, last year, and all earlier years merged.
                      Last tallied 2026-10-22: 2026 = 34 completed + 11 in progress; 2023–24 = 9 + 1.
-                     Each year is a native <details>; venue chips use the Publications chip colours:
-                     chip-a = journal, chip-b = conference, chip-pre = workshop. -->
+                     Each year is a native <details>. Venue chips are deliberately neutral (chip-track): the coloured
+                     chips in Publications encode venue rank, so reusing them here would read as a ranking. -->
                 <div class="svc-cols">
                     <div>
                         <h3 class="svc-sub">Reviewing</h3>
                         <div class="svc-rail">
                             <details class="svc-item">
                                 <summary><span class="svc-node"></span><span class="svc-year">2026</span><span class="svc-line"><span><span class="svc-n">45</span><span class="svc-u">manuscripts</span></span><span class="svc-toggle">11 venues <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></span></span></summary>
-                                <ul class="svc-venues"><li class="chip chip-a">TSE</li><li class="chip chip-a">TOSEM</li><li class="chip chip-a">TDSC</li><li class="chip chip-a">EMSE</li><li class="chip chip-a">IST</li><li class="chip chip-b">AAAI'27</li><li class="chip chip-b">ICLR'27</li><li class="chip chip-b">SANER'27</li><li class="chip chip-b">MSR'26 Data &amp; Tool</li><li class="chip chip-pre">AGENT'26</li><li class="chip chip-pre">DL4C'26</li></ul>
+                                <ul class="svc-venues"><li class="chip chip-track">TSE</li><li class="chip chip-track">TOSEM</li><li class="chip chip-track">TDSC</li><li class="chip chip-track">EMSE</li><li class="chip chip-track">IST</li><li class="chip chip-track">AAAI'27</li><li class="chip chip-track">ICLR'27</li><li class="chip chip-track">SANER'27</li><li class="chip chip-track">MSR'26 Data &amp; Tool</li><li class="chip chip-track">AGENT'26</li><li class="chip chip-track">DL4C'26</li></ul>
                             </details>
                             <details class="svc-item">
                                 <summary><span class="svc-node"></span><span class="svc-year">2025</span><span class="svc-line"><span><span class="svc-n">17</span><span class="svc-u">manuscripts</span></span><span class="svc-toggle">10 venues <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></span></span></summary>
-                                <ul class="svc-venues"><li class="chip chip-a">TSE</li><li class="chip chip-a">TOSEM</li><li class="chip chip-a">TKDE</li><li class="chip chip-a">SCP</li><li class="chip chip-a">Neural Networks</li><li class="chip chip-a">Neurocomputing</li><li class="chip chip-b">MSR'25</li><li class="chip chip-b">MSR'25 Data &amp; Tool</li><li class="chip chip-b">QUATIC'25</li><li class="chip chip-pre">DL4C'25</li></ul>
+                                <ul class="svc-venues"><li class="chip chip-track">TSE</li><li class="chip chip-track">TOSEM</li><li class="chip chip-track">TKDE</li><li class="chip chip-track">SCP</li><li class="chip chip-track">Neural Networks</li><li class="chip chip-track">Neurocomputing</li><li class="chip chip-track">MSR'25</li><li class="chip chip-track">MSR'25 Data &amp; Tool</li><li class="chip chip-track">QUATIC'25</li><li class="chip chip-track">DL4C'25</li></ul>
                             </details>
                             <details class="svc-item">
                                 <summary><span class="svc-node"></span><span class="svc-year">2023&ndash;24</span><span class="svc-line"><span><span class="svc-n">10</span><span class="svc-u">manuscripts</span></span><span class="svc-toggle">4 venues <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></span></span></summary>
-                                <ul class="svc-venues"><li class="chip chip-a">TSE</li><li class="chip chip-b">MSR'24 Data &amp; Tool</li><li class="chip chip-b">ISSTA'24 Artifact Evaluation</li><li class="chip chip-pre">DL4C'24</li></ul>
+                                <ul class="svc-venues"><li class="chip chip-track">TSE</li><li class="chip chip-track">MSR'24 Data &amp; Tool</li><li class="chip chip-track">ISSTA'24 Artifact Evaluation</li><li class="chip chip-track">DL4C'24</li></ul>
                             </details>
-                        </div>
-                        <div class="svc-legend" aria-hidden="true">
-                            <span><i style="background: var(--chip-a-bg); border: 1px solid var(--chip-a-fg)"></i>journal</span>
-                            <span><i style="background: var(--chip-b-bg); border: 1px solid var(--chip-b-fg)"></i>conference</span>
-                            <span><i style="background: var(--chip-pre-bg); border: 1px solid var(--chip-pre-fg)"></i>workshop</span>
                         </div>
                     </div>
                     <div>
