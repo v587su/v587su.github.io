@@ -266,11 +266,89 @@
     .award-body .times { color: var(--gold); font-weight: 600; }
 
     /* ---------- Services ---------- */
-    .service-list { margin: 0; padding: 0; list-style: none; max-width: 72ch; }
-    .service-list li { padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
-    .service-list li:last-child { border-bottom: 0; }
-    .service-list .role { font-weight: 600; }
-    .service-list .detail { color: var(--muted); }
+    .svc-cols { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; max-width: 76ch; }
+    .svc-sub {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 600;
+      margin: 0 0 12px;
+      letter-spacing: 0.005em;
+    }
+    .svc-rail {
+      position: relative;
+      padding-left: 22px;
+      border-left: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .svc-item { position: relative; }
+    .svc-node {
+      position: absolute;
+      left: -27px;
+      top: 14px;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1.5px solid var(--muted);
+      box-sizing: border-box;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .svc-year {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .svc-line { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-top: 2px; }
+    .svc-n {
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      font-variant-numeric: tabular-nums;
+    }
+    .svc-u { font-size: 14px; color: var(--muted); margin-left: 10px; }
+    .svc-toggle {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--muted);
+      white-space: nowrap;
+      transition: color 0.15s ease;
+    }
+    .svc-toggle svg { width: 12px; height: 12px; transition: transform 0.2s ease; }
+    details.svc-item > summary { cursor: pointer; list-style: none; }
+    details.svc-item > summary::-webkit-details-marker { display: none; }
+    details.svc-item > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+    details.svc-item > summary:hover .svc-toggle,
+    details.svc-item[open] .svc-toggle { color: var(--accent); }
+    details.svc-item[open] .svc-toggle svg { transform: rotate(180deg); }
+    details.svc-item[open] .svc-node { background: var(--accent); border-color: var(--accent); }
+    .svc-venues { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; padding: 0; list-style: none; }
+    .svc-venues .chip { padding: 3px 9px; font-size: 11.5px; }
+    .svc-role {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-top: 2px;
+    }
+    .svc-detail { margin: 6px 0 0; font-size: 13.5px; line-height: 1.55; color: var(--muted); }
+    .svc-legend {
+      display: flex; flex-wrap: wrap; gap: 14px;
+      margin: 28px 0 0; padding-left: 22px;
+      font-family: var(--mono); font-size: 11px; color: var(--muted);
+    }
+    .svc-legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .svc-legend i { width: 10px; height: 10px; border-radius: 3px; box-sizing: border-box; }
+    @media (max-width: 760px) {
+      .svc-cols { grid-template-columns: 1fr; row-gap: 30px; }
+      .svc-legend { margin-top: 18px; }
+    }
 
     /* ---------- Publications ---------- */
 
@@ -649,12 +727,45 @@
 
             <section class="section" id="services">
                 <h2 class="section-title">Services</h2>
-                <ul class="service-list">
-                    <li><span class="role">PC Member (Conference)</span> <span class="detail">&middot; AAAI'27, SANER'27, MSR'24&ndash;26 (Data and Tool Showcase Track), QUATIC'25, MSR'25 (Junior PC), ISSTA'24 (Artifact Evaluation)</span></li>
-                    <li><span class="role">PC Member (Workshop)</span> <span class="detail">&middot; AGENT'26&ndash;27, DL4C'24&ndash;26</span></li>
-                    <li><span class="role">Reviewer</span> <span class="detail">&middot; ICLR'27, TSE, TOSEM, TKDE, TDSC, Neural Networks, Neurocomputing, IST, SCP</span></li>
-                    <li><span class="role">Social Media Co-Chair</span> <span class="detail">&middot; FORGE'25</span></li>
-                </ul>
+                <!-- Reviewing counts are maintained by hand: manuscripts assigned in official reviewer / PC roles only
+                     (no sub-reviews; artifact evaluations and reviews still in progress included), by the year of the
+                     assignment. Last tallied 2026-10-22: 2026 = 34 completed + 11 in progress.
+                     Each year is a native <details>; venue chips use the Publications chip colours:
+                     chip-a = journal, chip-b = conference, chip-pre = workshop. -->
+                <div class="svc-cols">
+                    <div>
+                        <h3 class="svc-sub">Reviewing</h3>
+                        <div class="svc-rail">
+                            <details class="svc-item">
+                                <summary><span class="svc-node"></span><span class="svc-year">2026</span><span class="svc-line"><span><span class="svc-n">45</span><span class="svc-u">manuscripts</span></span><span class="svc-toggle">11 venues <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></span></span></summary>
+                                <ul class="svc-venues"><li class="chip chip-a">TSE</li><li class="chip chip-a">TOSEM</li><li class="chip chip-a">TDSC</li><li class="chip chip-a">EMSE</li><li class="chip chip-a">IST</li><li class="chip chip-b">AAAI'27</li><li class="chip chip-b">ICLR'27</li><li class="chip chip-b">SANER'27</li><li class="chip chip-b">MSR'26 Data &amp; Tool</li><li class="chip chip-pre">AGENT'26</li><li class="chip chip-pre">DL4C'26</li></ul>
+                            </details>
+                            <details class="svc-item">
+                                <summary><span class="svc-node"></span><span class="svc-year">2025</span><span class="svc-line"><span><span class="svc-n">17</span><span class="svc-u">manuscripts</span></span><span class="svc-toggle">10 venues <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></span></span></summary>
+                                <ul class="svc-venues"><li class="chip chip-a">TSE</li><li class="chip chip-a">TOSEM</li><li class="chip chip-a">TKDE</li><li class="chip chip-a">SCP</li><li class="chip chip-a">Neural Networks</li><li class="chip chip-a">Neurocomputing</li><li class="chip chip-b">MSR'25</li><li class="chip chip-b">MSR'25 Data &amp; Tool</li><li class="chip chip-b">QUATIC'25</li><li class="chip chip-pre">DL4C'25</li></ul>
+                            </details>
+                            <details class="svc-item">
+                                <summary><span class="svc-node"></span><span class="svc-year">2024</span><span class="svc-line"><span><span class="svc-n">9</span><span class="svc-u">manuscripts</span></span><span class="svc-toggle">3 venues <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></span></span></summary>
+                                <ul class="svc-venues"><li class="chip chip-b">MSR'24 Data &amp; Tool</li><li class="chip chip-b">ISSTA'24 Artifact Evaluation</li><li class="chip chip-pre">DL4C'24</li></ul>
+                            </details>
+                            <details class="svc-item">
+                                <summary><span class="svc-node"></span><span class="svc-year">2023</span><span class="svc-line"><span><span class="svc-n">1</span><span class="svc-u">manuscript</span></span><span class="svc-toggle">1 venue <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></span></span></summary>
+                                <ul class="svc-venues"><li class="chip chip-a">TSE</li></ul>
+                            </details>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="svc-sub">Organizing</h3>
+                        <div class="svc-rail">
+                            <div class="svc-item"><span class="svc-node"></span><span class="svc-year">2025</span><div class="svc-role">Social Media Co-Chair</div><p class="svc-detail">FORGE'25, ACM International Conference on AI Foundation Models and Software Engineering</p></div>
+                        </div>
+                        <div class="svc-legend" aria-hidden="true">
+                            <span><i style="background: var(--chip-a-bg); border: 1px solid var(--chip-a-fg)"></i>journal</span>
+                            <span><i style="background: var(--chip-b-bg); border: 1px solid var(--chip-b-fg)"></i>conference</span>
+                            <span><i style="background: var(--chip-pre-bg); border: 1px solid var(--chip-pre-fg)"></i>workshop</span>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="section" id="publications">
